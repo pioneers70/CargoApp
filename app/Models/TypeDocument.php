@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class TypeDocument extends Model
 {
     use HasFactory;
+    protected $table = 'type_documents';
+    protected $guarded = false;
+    protected $fillable = [
+        'name',
+    ];
 }

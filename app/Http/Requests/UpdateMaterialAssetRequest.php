@@ -11,7 +11,7 @@ class UpdateMaterialAssetRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,8 +21,11 @@ class UpdateMaterialAssetRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            //
+        return             [
+            'name' => '',
+            'asset_category_id' => '',
+            'measure_unit_id' => '',
+            'tag_id' => '',
         ];
     }
 }
