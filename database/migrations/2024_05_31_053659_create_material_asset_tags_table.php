@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('material_asset_id')->constrained();
             $table->foreignId('tag_id')->constrained();
             $table->timestamps();
+            // настроить каскадное удаление
         });
     }
 

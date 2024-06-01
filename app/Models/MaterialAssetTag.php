@@ -14,4 +14,5 @@ class MaterialAssetTag extends Model
        'material_asset_id',
         'tag_id',
     ];
+
 }

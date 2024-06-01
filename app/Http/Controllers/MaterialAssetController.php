@@ -8,6 +8,7 @@ use App\Http\Requests\StoreMaterialAssetRequest;
 use App\Http\Requests\UpdateMaterialAssetRequest;
 use App\Models\MeasureUnit;
 use App\Models\Tag;
+use Random\RandomError;
 
 class MaterialAssetController extends Controller
 {
@@ -16,23 +17,11 @@ class MaterialAssetController extends Controller
      */
     public function index()
     {
-        $category = AssetCategory::find(1);
-//        dd($category->material_assets());
-        $measure = MeasureUnit::find(1);
-//        dd($measure->material_assets);
-        $assets = MaterialAsset::find(10);
-//        dd($assets->asset_category);
+        $materialAssets = MaterialAsset::with('asset_category')->get();
+//        $assetcategories = AssetCategory::all();
+//        dd($materialAssets);
 
-        $assets = MaterialAsset::find(12);
-//        dd($assets->tags);
-        $tag = Tag::find(2);
-        dd($tag->material_assets);
-
-
-
-//        dd($categories);
-//        dd($asset);
-
+        return view('importexcel.index', compact('materialAssets'));
     }
 
     /**
@@ -40,7 +29,7 @@ class MaterialAssetController extends Controller
      */
     public function create()
     {
-        //
+        return view('importexcel.add');
     }
 
     /**
@@ -48,7 +37,9 @@ class MaterialAssetController extends Controller
      */
     public function store(StoreMaterialAssetRequest $request)
     {
-        //
+        $data = $request->validated();
+        MaterialAsset::create($data);
+        return redirect()->back()->with('status_add', 'Успешно добавлено');
     }
 
     /**
@@ -56,7 +47,7 @@ class MaterialAssetController extends Controller
      */
     public function show(MaterialAsset $materialAsset)
     {
-        //
+       return view('importexcel.show',compact('materialAsset'));
     }
 
     /**
@@ -64,7 +55,7 @@ class MaterialAssetController extends Controller
      */
     public function edit(MaterialAsset $materialAsset)
     {
-        //
+        return view('importexcel.edit', compact('materialAsset'));
     }
 
     /**
@@ -72,7 +63,10 @@ class MaterialAssetController extends Controller
      */
     public function update(UpdateMaterialAssetRequest $request, MaterialAsset $materialAsset)
     {
-        //
+        $data = $request->validated();
+        $materialAsset->update($data);
+        return redirect()->route('materialAssets.show', $materialAsset->id);
+//        return redirect()->back()->with('status_add', 'Успешно добавлено');
     }
 
     /**
@@ -80,6 +74,8 @@ class MaterialAssetController extends Controller
      */
     public function destroy(MaterialAsset $materialAsset)
     {
-        //
+
+        $materialAsset->delete();
+        return redirect()->route('materialAssets.index');
     }
 }

@@ -21,7 +21,7 @@ class MaterialAsset extends Model
 
     public function asset_category(): BelongsTo
     {
-        return $this->belongsTo(AssetCategory::class);
+        return $this->belongsTo(AssetCategory::class, 'asset_category_id');
     }
     public function measure_unit(): BelongsTo
     {

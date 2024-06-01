@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreMaterialAssetRequest extends FormRequest
+class StoreAssetCategoryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -21,13 +21,9 @@ class StoreMaterialAssetRequest extends FormRequest
      */
     public function rules(): array
     {
-        return
-            [
-                'name' => '',
-                'asset_category_id' => '',
-                'measure_unit_id' => '',
-
-            ];
-
+        return [
+            'full_name' => '',
+            'short_name' => '',
+        ];
     }
 }

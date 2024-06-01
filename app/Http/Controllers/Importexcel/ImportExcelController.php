@@ -11,7 +11,7 @@ class ImportExcelController extends Controller
 {
     public function index()
     {
-        return view('importexcel.index');
+        return view('importexcel.import-add');
     }
 
     public function importexcel(Request $request)
@@ -23,7 +23,7 @@ class ImportExcelController extends Controller
             ],
         ]);
         Excel::import(new MaterialAssetImport, $request->file('import_file'));
-        return redirect()->back()->with('status', 'Успешно добавлены');
+        return redirect()->back()->with('status', 'Успешно импортировано');
 
     }
 

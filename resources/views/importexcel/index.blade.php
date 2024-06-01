@@ -1,34 +1,32 @@
 <x-app-import-layout>
-    <x-slot name="title">
-        Импорт Excel данных с БД
-    </x-slot>
 
-    <div class="container">
-        <div class="row"></div>
-        <div class="col-md-8 mt-5">
-            @if(session('status'))
-                <div class="alert alert-success">
-                    {{ session('status') }}
-                </div>
-            @endif
-            <div class="card">
-                <div class="card-header">
-                    <h2>Добавить новое оборудование с базу данных</h2>
-                </div>
-                <div class="card-body">
-                    <form action="{{ url('/assets/import') }}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        <div class="input-group">
-                            <input type="file" name="import_file" class="form-control">
-                            <button type="submit" class="btn btn-primary">Добавить</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+    {{--        <div>{{$materialAsset->id}}.{{$materialAsset->name}}</div>--}}
+    <table class="table table-primary mt-1">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Название</th>
+            <th scope="col">Категория</th>
+            <th scope="col">Комплектность</th>
+            <th scope="col">Справка</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            @foreach($materialAssets as $materialAsset)
+                <th scope="row">{{$materialAsset->id}}</th>
+                <td>{{$materialAsset->name}}</td>
+                <td>{{$materialAsset->asset_category->short_name}}</td>
+                <td>{{$materialAsset->measure_unit->name}}</td>
+                <td><a link href="{{route('materialAssets.show', $materialAsset->id )}}" class="btn btn-success">Посмотреть</a></td>
+        </tr>
+        @endforeach
+        </tbody>
+    </table>
 
 
-    </div>
+    {{--<div>{{$material_asset->asset_category_id}}</div>
+    <div>{{$material_asset->measure_unit_id}}</div>--}}
+
 
 </x-app-import-layout>
-

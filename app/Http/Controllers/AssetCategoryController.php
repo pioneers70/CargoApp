@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\InfoCard;
-use App\Http\Requests\StoreInfoCardRequest;
-use App\Http\Requests\UpdateInfoCardRequest;
+use App\Http\Requests\StoreAssetCategoryRequest;
+use App\Http\Requests\UpdateAssetCategoryRequest;
+use App\Models\AssetCategory;
+use Illuminate\Http\Request;
 
-class InfoCardController extends Controller
+class AssetCategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,13 +22,13 @@ class InfoCardController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreInfoCardRequest $request)
+    public function store(StoreAssetCategoryRequest $request)
     {
         //
     }
@@ -35,15 +36,15 @@ class InfoCardController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(InfoCard $infoCard)
+    public function show(AssetCategory $assetCategory)
     {
-
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(InfoCard $infoCard)
+    public function edit(AssetCategory $assetCategory)
     {
         //
     }
@@ -51,7 +52,7 @@ class InfoCardController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateInfoCardRequest $request, InfoCard $infoCard)
+    public function update(UpdateAssetCategoryRequest $request, AssetCategory $assetCategory)
     {
         //
     }
@@ -59,7 +60,7 @@ class InfoCardController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(InfoCard $infoCard)
+    public function destroy(AssetCategory $assetCategory)
     {
         //
     }
