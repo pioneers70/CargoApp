@@ -1,9 +1,10 @@
 <?php
 
+use App\Http\Controllers\AssetCategoryController;
 use App\Http\Controllers\Importexcel\ImportExcelController;
 use App\Http\Controllers\MaterialAssetController;
 use App\Http\Controllers\ProfileController;
-use App\Models\AssetCategory;
+use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -28,7 +29,9 @@ Route::get('/materialAssets/import',[ImportExcelController::class, 'index'])->na
 Route::post('/materialAssets/import',[ImportExcelController::class, 'importexcel']);
 
 Route::resource('materialAssets', MaterialAssetController::class);
-//Route::get('/materialAssets/add',[MaterialAssetController::class, 'create'])->name('materialAssets.add');
+Route::resource('assetsCategories', AssetCategoryController::class);
+Route::resource('tags', TagController::class);
+
 
 /*Route::get('/assets', [MaterialAssetController::class, 'index'])->name('assets.index');
 Route::get('/assets/create', [MaterialAssetController::class, 'create'])->name('assets.create');

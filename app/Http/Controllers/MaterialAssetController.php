@@ -18,8 +18,6 @@ class MaterialAssetController extends Controller
     public function index()
     {
         $materialAssets = MaterialAsset::with('asset_category')->get();
-//        $assetcategories = AssetCategory::all();
-//        dd($materialAssets);
 
         return view('importexcel.index', compact('materialAssets'));
     }
@@ -29,7 +27,10 @@ class MaterialAssetController extends Controller
      */
     public function create()
     {
-        return view('importexcel.add');
+        $assetcategories = AssetCategory::all();
+        $measureunits = MeasureUnit::all();
+        $tags = Tag::all();
+        return view('importexcel.add', compact('assetcategories', 'tags','measureunits'));
     }
 
     /**
@@ -38,7 +39,10 @@ class MaterialAssetController extends Controller
     public function store(StoreMaterialAssetRequest $request)
     {
         $data = $request->validated();
-        MaterialAsset::create($data);
+        $tags = $data['tags'];
+        unset($data['tags']);
+        $materialAsset = MaterialAsset::create($data);
+        $materialAsset->tags()->attach($tags);
         return redirect()->back()->with('status_add', 'Успешно добавлено');
     }
 
@@ -47,7 +51,7 @@ class MaterialAssetController extends Controller
      */
     public function show(MaterialAsset $materialAsset)
     {
-       return view('importexcel.show',compact('materialAsset'));
+        return view('importexcel.show', compact('materialAsset'));
     }
 
     /**
@@ -55,7 +59,10 @@ class MaterialAssetController extends Controller
      */
     public function edit(MaterialAsset $materialAsset)
     {
-        return view('importexcel.edit', compact('materialAsset'));
+        $assetcategories = AssetCategory::all();
+        $tags = Tag::all();
+        $measureunits = MeasureUnit::all();
+        return view('importexcel.edit', compact('materialAsset', 'assetcategories','tags', 'measureunits'));
     }
 
     /**
