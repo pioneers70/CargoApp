@@ -71,7 +71,12 @@ class MaterialAssetController extends Controller
     public function update(UpdateMaterialAssetRequest $request, MaterialAsset $materialAsset)
     {
         $data = $request->validated();
+        $tags = $data['tags'];
+        unset($data['tags']);
+
         $materialAsset->update($data);
+        $materialAsset->tags()->sync($tags);
+
         return redirect()->route('materialAssets.show', $materialAsset->id);
 //        return redirect()->back()->with('status_add', 'Успешно добавлено');
     }

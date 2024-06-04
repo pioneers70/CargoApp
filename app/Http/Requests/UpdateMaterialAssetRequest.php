@@ -25,7 +25,7 @@ class UpdateMaterialAssetRequest extends FormRequest
             'name' => '',
             'asset_category_id' => '',
             'measure_unit_id' => '',
-            'tag_id' => '',
+            'tags' => '',
         ];
     }
 }
