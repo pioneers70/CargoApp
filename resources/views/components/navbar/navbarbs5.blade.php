@@ -14,6 +14,17 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link btn btn-outline-primary btn-sm me-2 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Операции со складом
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="{{ route('operations.create') }}">Поступление</a></li>
+                        <li><a class="dropdown-item" href="#">Списание</a></li>
+                        <li><a class="dropdown-item" href="#">Перемещение</a></li>
+                        <li><a class="dropdown-item" href="{{ route('inventories.index') }}">Остатки</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link btn btn-outline-primary btn-sm me-2 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Добавить в БД
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
