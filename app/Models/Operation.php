@@ -29,9 +29,9 @@ class Operation extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function material_assets(): HasMany
+    public function materialAsset(): BelongsTo
     {
-        return $this->hasMany(MaterialAsset::class, 'material_asset_id');
+        return $this->BelongsTo(MaterialAsset::class, 'material_asset_id');
     }
 
     public function vpu_object(): BelongsTo
@@ -39,7 +39,7 @@ class Operation extends Model
         return $this->belongsTo(VpuObject::class, 'vpu_object_id');
     }
 
-    public function fromWareHouse(): BelongsTo
+    public function fromWarehouse(): BelongsTo
     {
         return $this->BelongsTo(Warehouse::class, 'from_warehouse_id');
     }

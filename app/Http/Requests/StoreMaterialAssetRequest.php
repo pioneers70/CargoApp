@@ -27,6 +27,8 @@ class StoreMaterialAssetRequest extends FormRequest
                 'asset_category_id' => '',
                 'measure_unit_id' => '',
                 'tags' => '',
+                'description' => '',
+                'urlimg'=>'',
 
             ];
 

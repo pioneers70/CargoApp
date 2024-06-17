@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AssetCategory;
+use App\Models\InfoCard;
 use App\Models\MaterialAsset;
 use App\Http\Requests\StoreMaterialAssetRequest;
 use App\Http\Requests\UpdateMaterialAssetRequest;
@@ -43,6 +44,15 @@ class MaterialAssetController extends Controller
         unset($data['tags']);
         $materialAsset = MaterialAsset::create($data);
         $materialAsset->tags()->attach($tags);
+        $urlimgPath = null;
+        if ($request->hasFile('urlimg')) {
+            $urlimgPath = $request->file('urlimg')->store('info_cards','public');
+        }
+        $infoCard = InfoCard::create([
+           'material_asset_id' => $materialAsset->id,
+            'description' => $data['description'],
+            'urlimg' => $urlimgPath,
+        ]);
         return redirect()->back()->with('status_add', 'Успешно добавлено');
     }
 
@@ -51,7 +61,8 @@ class MaterialAssetController extends Controller
      */
     public function show(MaterialAsset $materialAsset)
     {
-        return view('importexcel.show', compact('materialAsset'));
+        $infocard = $materialAsset->info_card;
+        return view('importexcel.show', compact('materialAsset','infocard'));
     }
 
     /**

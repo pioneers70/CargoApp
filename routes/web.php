@@ -6,7 +6,9 @@ use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\MaterialAssetController;
 use App\Http\Controllers\OperationController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SystemController;
 use App\Http\Controllers\TagController;
+use App\Http\Controllers\VpuObjectController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -30,11 +32,16 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/materialAssets/import',[ImportExcelController::class, 'index'])->name('materialAssets.import');
 Route::post('/materialAssets/import',[ImportExcelController::class, 'importexcel']);
 
+Route::get('/operations/transfer',[OperationController::class,'index_transfer'])->name('operations.index_transfer');
+Route::post('operations/transfer', [OperationController::class,'transfer'])->name('operations.transfer');
+
 Route::resource('materialAssets', MaterialAssetController::class);
 Route::resource('assetsCategories', AssetCategoryController::class);
 Route::resource('tags', TagController::class);
 Route::resource('operations', OperationController::class);
 Route::resource('inventories', InventoryController::class);
+Route::resource('vpuObjects', VpuObjectController::class);
+Route::resource('systems', SystemController::class);
 
 
 /*Route::get('/assets', [MaterialAssetController::class, 'index'])->name('assets.index');

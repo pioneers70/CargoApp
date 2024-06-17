@@ -30,6 +30,7 @@ class StoreOperationRequest extends FormRequest
             'quantity' => 'required|array',
             'quantity.*' => 'required|integer|min:1',
             'to_warehouse_id' => 'required|exists:warehouses,id',
+            'from_warehouse_id' => 'required|exists:warehouses,id',
             'reason' => 'nullable|string',
         ];
     }

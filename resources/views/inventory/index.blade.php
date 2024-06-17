@@ -11,7 +11,7 @@
         </tr>
         </thead>
         <tbody>
-        @foreach($inventories as $inventory)
+            @foreach($inventories as $inventory)
         <tr>
             <th scope="row">{{$inventory->id}}</th>
             <td>{{$inventory->warehouse->name}}</td>

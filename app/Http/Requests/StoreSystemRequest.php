@@ -11,7 +11,7 @@ class StoreSystemRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,8 @@ class StoreSystemRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'full_name' =>'',
+            'short_name' =>'',
         ];
     }
 }

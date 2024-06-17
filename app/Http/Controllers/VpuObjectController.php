@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\System;
 use App\Models\VpuObject;
 use App\Http\Requests\StoreVpuObjectRequest;
 use App\Http\Requests\UpdateVpuObjectRequest;
@@ -13,7 +14,8 @@ class VpuObjectController extends Controller
      */
     public function index()
     {
-        //
+        $vpuObjects = VpuObject::with('systems')->get();
+        return view('vpuObject.index',compact('vpuObjects'));
     }
 
     /**
@@ -21,7 +23,8 @@ class VpuObjectController extends Controller
      */
     public function create()
     {
-        //
+        $systems = System::all();
+        return view('vpuObject.create', compact('systems'));
     }
 
     /**
@@ -29,7 +32,12 @@ class VpuObjectController extends Controller
      */
     public function store(StoreVpuObjectRequest $request)
     {
-        //
+        $data = $request->validated();
+        $systems = $data['systems'];
+        unset($data['systems']);
+        $vpuObject = VpuObject::create($data);
+        $vpuObject->systems()->attach($systems);
+        return redirect()->back()->with('status_add', 'Успешно добавлено');
     }
 
     /**

@@ -19,7 +19,8 @@
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="{{ route('operations.create') }}">Поступление</a></li>
                         <li><a class="dropdown-item" href="#">Списание</a></li>
-                        <li><a class="dropdown-item" href="#">Перемещение</a></li>
+                        <li><a class="dropdown-item" href="{{route('operations.index_transfer')}}">Перемещение</a></li>
+                        <li><a class="dropdown-item" href="{{route('operations.index')}}">Последние операции</a></li>
                         <li><a class="dropdown-item" href="{{ route('inventories.index') }}">Остатки</a></li>
                     </ul>
                 </li>
@@ -31,6 +32,15 @@
                         <li><a class="dropdown-item" href="{{ route('materialAssets.import') }}">Импорт Excel в БД</a></li>
                         <li><a class="dropdown-item" href="{{ route('materialAssets.create') }}">Добавить новые данные в БД</a></li>
                         <li><a class="dropdown-item" href="#">Редактирование справочника</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link btn btn-outline-primary btn-sm me-2 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Объекты на ВПУ
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="{{ route('vpuObjects.index') }}">Все объекты ВПУ</a></li>
+                        <li><a class="dropdown-item" href="{{ route('vpuObjects.create') }}">Добавить новый объект или систему</a></li>
                     </ul>
                 </li>
             </ul>

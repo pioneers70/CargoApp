@@ -21,7 +21,7 @@ class SystemController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -29,7 +29,9 @@ class SystemController extends Controller
      */
     public function store(StoreSystemRequest $request)
     {
-        //
+        $data = $request->validated();
+        System::create($data);
+        return redirect()->back()->with('status_add', 'Успешно добавлено');
     }
 
     /**

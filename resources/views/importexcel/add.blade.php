@@ -1,6 +1,6 @@
 <x-app-import-layout>
     <div class="container shadow p-3 mb-5 rounded">
-        <form action="{{ route('materialAssets.store') }}" method="post">
+        <form action="{{ route('materialAssets.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="mt-5">
                 <label for="name" class="form-label"><h2>Добавить новое оборудование</h2></label>
@@ -39,6 +39,14 @@
                     </div>
                 </div>
             </div>
+            <div class="form-group mt-3">
+                <label for="description" class="form-label">Добавить описание и характеристики</label>
+                <textarea name="description" id="description" class="form-control"></textarea>
+            </div>
+            <div class="form-group mt=3">
+                <label for="urlimg" class="form-label">Загрузить изображение</label>
+                <input type="file" class="form-control" name="urlimg" id="urlimg" >
+            </div>
             <button type="submit" class="btn btn-outline-success mt-1">Добавить</button>
         </form>
 
@@ -54,7 +62,7 @@
             <div class="container mt-1"><h2>Добавить категорию оборудования</h2></div>
             <form action="{{ route('assetsCategories.store') }}" method="post">
                 @csrf
-                <hr style="color: #18181b; height: 5px">
+                <hr style="color: #0f0fe0; height: 5px">
                 <div class="mt-1">
                     <label for="full_name" class="form-label">Введите полное название</label>
                     <input type="text" class="form-control" name="full_name" id="full_name" placeholder="Название">
@@ -64,15 +72,15 @@
                     <input type="text" class="form-control" name="short_name" id="short_name"
                            placeholder="Коротко">
                 </div>
-                <button type="submit" class="btn btn-primary mt-1">Добавить</button>
+                <button type="submit" class="btn btn-primary mb-2 mt-1 ">Добавить</button>
             </form>
         </div>
         <div class="container">
-            <div>Добавить новые теги</div>
+            <div><h2>Добавить новые теги</h2></div>
             <form action="{{ route('tags.store') }}" method="post">
                 @csrf
-                <hr style="color: #18181b; height: 5px">
-                <div class="mt-5">
+                <hr style="color: #0c0cda; height: 5px">
+                <div class="mt-2">
                     <label for="name" class="form-label">Введите название</label>
                     <input type="text" class="form-control" name="name" id="name" placeholder="Название">
                 </div>

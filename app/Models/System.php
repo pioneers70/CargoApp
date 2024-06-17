@@ -10,7 +10,7 @@ class System extends Model
 {
     use HasFactory;
 
-    protected $table = 'system';
+    protected $table = 'systems';
     protected $guarded = false;
     protected $fillable = [
         'full_name',

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class MaterialAsset extends Model
 {
@@ -39,6 +40,10 @@ class MaterialAsset extends Model
     public function operations(): HasMany
     {
         return $this->hasMany(Operation::class);
+    }
+    public function info_card(): HasOne
+    {
+        return $this->HasOne(InfoCard::class,'material_asset_id');
     }
 }
 
