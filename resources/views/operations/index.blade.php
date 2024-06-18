@@ -9,6 +9,7 @@
             <th scope="col">Склад поступления</th>
             <th scope="col">Склад списания/перемещения</th>
             <th scope="col">Количество</th>
+            <th scope="col">Нa какой объект</th>
             <th scope="col">Причина</th>
         </tr>
         </thead>
@@ -18,9 +19,10 @@
                 <th scope="row">{{$operation->id}}</th>
                 <th scope="row">{{$operation->created_at}}</th>
                 <td>{{$operation->materialAsset->name}}</td>
-                <td>{{$operation->toWarehouse->name}}</td>
+                <td>{{$operation->toWarehouse->name ?? '-'}}</td>
                 <td>{{ $operation->fromWarehouse->name ?? '-' }}</td>
                 <td>{{$operation->quantity}}</td>
+                <td>{{$operation->vpuObject->name ?? '-'}}</td>
                 <td>{{$operation->reason}}</td>
             </tr>
         @endforeach

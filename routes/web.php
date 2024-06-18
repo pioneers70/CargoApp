@@ -34,6 +34,9 @@ Route::post('/materialAssets/import',[ImportExcelController::class, 'importexcel
 
 Route::get('/operations/transfer',[OperationController::class,'index_transfer'])->name('operations.index_transfer');
 Route::post('operations/transfer', [OperationController::class,'transfer'])->name('operations.transfer');
+Route::get('/operations/writeoff',[OperationController::class,'index_writeoff'])->name('operations.index_writeoff');
+Route::post('operations/writeoff', [OperationController::class,'writeoff'])->name('operations.writeoff');
+
 
 Route::resource('materialAssets', MaterialAssetController::class);
 Route::resource('assetsCategories', AssetCategoryController::class);

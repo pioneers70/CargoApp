@@ -34,7 +34,7 @@ class Operation extends Model
         return $this->BelongsTo(MaterialAsset::class, 'material_asset_id');
     }
 
-    public function vpu_object(): BelongsTo
+    public function vpuObject(): BelongsTo
     {
         return $this->belongsTo(VpuObject::class, 'vpu_object_id');
     }

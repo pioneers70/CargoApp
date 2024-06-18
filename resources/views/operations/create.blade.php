@@ -16,7 +16,8 @@
                     </div>
                     <div class="col-auto">
                         <label for="quantity_0" class="form-label">Сколько</label>
-                        <input type="text" class="form-control form-control-sm" name="quantity[]" id="quantity_0" placeholder="сколько">
+                        <input type="text" class="form-control form-control-sm" name="quantity[]" id="quantity_0"
+                               placeholder="сколько">
                     </div>
                 </div>
             </div>
@@ -34,7 +35,7 @@
             </div>
 
             <div class="form-group mt-3">
-                <label for="reason" class="form-label">Reason</label>
+                <label for="reason" class="form-label">Причина</label>
                 <textarea name="reason" id="reason" class="form-control"></textarea>
             </div>
 
@@ -49,7 +50,7 @@
     </div>
 
     <script>
-        document.getElementById('add-item').addEventListener('click', function() {
+        document.getElementById('add-item').addEventListener('click', function () {
             const container = document.getElementById('items-container');
             const index = container.children.length;
 
@@ -75,9 +76,6 @@
             container.appendChild(newItem);
         });
     </script>
-
-
-
 
 
 </x-app-import-layout>

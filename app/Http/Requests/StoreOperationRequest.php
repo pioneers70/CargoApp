@@ -22,15 +22,11 @@ class StoreOperationRequest extends FormRequest
     public function rules(): array
     {
         return [
-/*            'material_asset_id' =>'',
-            'to_warehouse_id' =>'',
-            'quantity' =>'',*/
             'material_asset_id' => 'required|array',
             'material_asset_id.*' => 'required|exists:material_assets,id',
             'quantity' => 'required|array',
             'quantity.*' => 'required|integer|min:1',
             'to_warehouse_id' => 'required|exists:warehouses,id',
-            'from_warehouse_id' => 'required|exists:warehouses,id',
             'reason' => 'nullable|string',
         ];
     }

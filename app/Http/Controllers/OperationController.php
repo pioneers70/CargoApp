@@ -10,9 +10,11 @@ use App\Models\Operation;
 use App\Http\Requests\StoreOperationRequest;
 use App\Http\Requests\UpdateOperationRequest;
 use App\Models\Tag;
+use App\Models\VpuObject;
 use App\Models\Warehouse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class OperationController extends Controller
 {
@@ -21,7 +23,7 @@ class OperationController extends Controller
      */
     public function index()
     {
-        $operations = Operation::with(['materialAsset', 'fromWarehouse', 'toWarehouse'])->get();
+        $operations = Operation::with(['materialAsset', 'fromWarehouse', 'toWarehouse', 'vpuObject'])->get();
         return view('operations.index', compact('operations'));
 
     }
@@ -45,41 +47,43 @@ class OperationController extends Controller
      */
     public function store(StoreOperationRequest $request)
     {
+        $data = $request->validated();
+        $materialAssetIds = $data['material_asset_id'];
+        $toWarehouseId = $data['to_warehouse_id'];
+        $quantities = $data['quantity'];
+        $reason = $data['reason'] ?? '';
 
-        $toWarehouseId = $request->input('to_warehouse_id');
-        $reason = $request->input('reason');
+            DB::transaction(function () use ($toWarehouseId, $reason, $materialAssetIds, $quantities) {
+                foreach ($materialAssetIds as $index => $materialAssetId) {
+                    $quantity = $quantities[$index];
 
-        $materialAssetIds = $request->input('material_asset_id');
-        $quantities = $request->input('quantity');
+                    $operation = Operation::create([
+                        'material_asset_id' => $materialAssetId,
+                        'to_warehouse_id' => $toWarehouseId,
+                        'quantity' => $quantity,
+                        'reason' => $reason,
+                        'user_id' => '1',
+                        'movement_type' => 'in',
+                    ]);
 
-        foreach ($materialAssetIds as $index => $materialAssetId) {
-            $quantity = $quantities[$index];
+                    $inventory = Inventory::firstOrNew([
+                        'material_asset_id' => $materialAssetId,
+                        'warehouse_id' => $toWarehouseId,
+                    ]);
 
+                    $inventory->quantity = ($inventory->quantity ?? 0) + $quantity;
+                    $inventory->save();
 
-            $operation = Operation::create([
-                'material_asset_id' => $materialAssetId,
-                'to_warehouse_id' => $toWarehouseId,
-                'quantity' => $quantity,
-                'reason' => $reason,
-                'user_id' => '1',
-                'movement_type' => 'in',
-            ]);
-            $inventory = Inventory::firstOrNew([
-                'material_asset_id' => $materialAssetId,
-                'warehouse_id' => $toWarehouseId,
-            ]);
-            $inventory->quantity = ($inventory->quantity ?? 0) + $quantity;
-            $inventory->save();
-        }
-
-        return redirect()->back()->with('status_add', 'Успешно добавлено');
+                }
+            });
+            return redirect()->back()->with('status_add', 'Успешно добавлено');
     }
 
     public function index_transfer()
     {
         $warehouses = Warehouse::all();
         $materialassets = MaterialAsset::all();
-        return view('operations.transfer',compact('warehouses', 'materialassets'));
+        return view('operations.transfer', compact('warehouses', 'materialassets'));
     }
 
     public function transfer(Request $request)
@@ -132,6 +136,60 @@ class OperationController extends Controller
         });
 
         return redirect()->back()->with('status', 'Перемещение успешно выполнено');
+    }
+
+    public function index_writeoff()
+    {
+        $vpuObjects = VpuObject::all();
+        $warehouses = Warehouse::all();
+        $materialAssets = MaterialAsset::all();
+        return view('operations.writeoff', compact('vpuObjects', 'warehouses', 'materialAssets'));
+
+    }
+
+    public function writeoff(Request $request)
+    {
+        $validatedData = $request->validate([
+            'from_warehouse_id' => 'required|exists:warehouses,id',
+            'items' => 'required|array',
+            'items.*.material_asset_id' => 'required|exists:material_assets,id',
+            'items.*.quantity' => 'required|numeric|min:1',
+            'vpu_object_id' => 'required|exists:vpu_objects,id',
+            'reason' => 'required|string',
+        ]);
+
+        $fromWarehouseId = $validatedData['from_warehouse_id'];
+        $items = $validatedData['items'];
+        $vpuObject = $validatedData['vpu_object_id'];
+        $reason = $validatedData['reason'];
+
+        DB::transaction(function () use ($reason, $vpuObject, $fromWarehouseId, $items) {
+            foreach ($items as $item) {
+                $materialAssetId = $item['material_asset_id'];
+                $quantity = $item['quantity'];
+
+                $fromInventory = Inventory::where('warehouse_id', $fromWarehouseId)
+                    ->where('material_asset_id', $materialAssetId)
+                    ->firstOrFail();
+
+                if ($fromInventory->quantity < $quantity) {
+                    throw new \Exception("Недостаточно количества материала на складе");
+                }
+                $fromInventory->quantity -= $quantity;
+                $fromInventory->save();
+
+                Operation::create([
+                    'material_asset_id' => $materialAssetId,
+                    'from_warehouse_id' => $fromWarehouseId,
+                    'quantity' => $quantity,
+                    'operation_type' => 'out',
+                    'user_id' => '1',
+                    'vpu_object_id' => $vpuObject,
+                    'reason' => $reason,
+                ]);
+            }
+        });
+        return redirect()->back()->with('status', 'Списание проведено успешно');
     }
 
 

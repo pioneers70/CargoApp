@@ -18,8 +18,8 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="{{ route('operations.create') }}">Поступление</a></li>
-                        <li><a class="dropdown-item" href="#">Списание</a></li>
-                        <li><a class="dropdown-item" href="{{route('operations.index_transfer')}}">Перемещение</a></li>
+                        <li><a class="dropdown-item" href="{{ route('operations.index_writeoff') }}">Списание</a></li>
+                        <li><a class="dropdown-item" href="{{ route('operations.index_transfer')}}">Перемещение</a></li>
                         <li><a class="dropdown-item" href="{{route('operations.index')}}">Последние операции</a></li>
                         <li><a class="dropdown-item" href="{{ route('inventories.index') }}">Остатки</a></li>
                     </ul>
