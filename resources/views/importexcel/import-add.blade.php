@@ -16,7 +16,7 @@
                     <h2>Импорт данных Excel в БД</h2>
                 </div>
                 <div class="card-body">
-                    <form action="{{ url('/assets/import') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('materialAssets.add') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="input-group">
                             <input type="file" name="import_file" class="form-control">

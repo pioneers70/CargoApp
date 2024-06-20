@@ -30,7 +30,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 Route::get('/materialAssets/import',[ImportExcelController::class, 'index'])->name('materialAssets.import');
-Route::post('/materialAssets/import',[ImportExcelController::class, 'importexcel']);
+Route::post('/materialAssets/import',[ImportExcelController::class, 'importexcel'])->name('materialAssets.add');
 
 Route::get('/operations/transfer',[OperationController::class,'index_transfer'])->name('operations.index_transfer');
 Route::post('operations/transfer', [OperationController::class,'transfer'])->name('operations.transfer');

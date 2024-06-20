@@ -16,17 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->foreignId('asset_category_id')->constrained();
             $table->foreignId('measure_unit_id')->constrained();
-//            $table->foreignId('tag_id')->nullable()->constrained();
             $table->timestamps();
-
-
-
-/*            $table->unsignedBigInteger('measure_unit_id');
-            $table->foreign('measure_unit_id')->references('id')->on('measure_units');*/
-
-/*            $table->unsignedBigInteger('tag_id');
-            $table->foreign('tag_id')->references('id')->on('tags');*/
-
 
 
         });

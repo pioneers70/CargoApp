@@ -31,7 +31,7 @@ class MaterialAssetController extends Controller
         $assetcategories = AssetCategory::all();
         $measureunits = MeasureUnit::all();
         $tags = Tag::all();
-        return view('importexcel.add', compact('assetcategories', 'tags','measureunits'));
+        return view('importexcel.add', compact('assetcategories', 'tags', 'measureunits'));
     }
 
     /**
@@ -40,16 +40,17 @@ class MaterialAssetController extends Controller
     public function store(StoreMaterialAssetRequest $request)
     {
         $data = $request->validated();
-        $tags = $data['tags'];
-        unset($data['tags']);
+        $tags = $data['tags'] ?? [];
         $materialAsset = MaterialAsset::create($data);
-        $materialAsset->tags()->attach($tags);
+        if (!empty($tags)) {
+            $materialAsset->tags()->attach($tags);
+        }
         $urlimgPath = null;
         if ($request->hasFile('urlimg')) {
-            $urlimgPath = $request->file('urlimg')->store('info_cards','public');
+            $urlimgPath = $request->file('urlimg')->store('info_cards', 'public');
         }
         $infoCard = InfoCard::create([
-           'material_asset_id' => $materialAsset->id,
+            'material_asset_id' => $materialAsset->id,
             'description' => $data['description'],
             'urlimg' => $urlimgPath,
         ]);
@@ -62,7 +63,7 @@ class MaterialAssetController extends Controller
     public function show(MaterialAsset $materialAsset)
     {
         $infocard = $materialAsset->info_card;
-        return view('importexcel.show', compact('materialAsset','infocard'));
+        return view('importexcel.show', compact('materialAsset', 'infocard'));
     }
 
     /**
@@ -73,7 +74,8 @@ class MaterialAssetController extends Controller
         $assetcategories = AssetCategory::all();
         $tags = Tag::all();
         $measureunits = MeasureUnit::all();
-        return view('importexcel.edit', compact('materialAsset', 'assetcategories','tags', 'measureunits'));
+        $infoCards = InfoCard::all();
+        return view('importexcel.edit', compact('materialAsset', 'assetcategories', 'tags', 'measureunits', 'infoCards'));
     }
 
     /**
@@ -82,14 +84,36 @@ class MaterialAssetController extends Controller
     public function update(UpdateMaterialAssetRequest $request, MaterialAsset $materialAsset)
     {
         $data = $request->validated();
-        $tags = $data['tags'];
+
+        if (array_key_exists('tags', $data)) {
+            $tags = $data['tags'];
+            $materialAsset->tags()->sync($tags);
+        } else {
+            $materialAsset->tags()->sync([]);
+        }
         unset($data['tags']);
 
         $materialAsset->update($data);
-        $materialAsset->tags()->sync($tags);
+
+        $infoCard = $materialAsset->info_card;
+
+        $infoCardData = [
+            'description' => $data['description'] ?? null,
+        ];
+
+        if ($request->hasFile('urlimg')) {
+            $urlimgPath = $request->file('urlimg')->store('info_cards', 'public');
+            $infoCardData['urlimg'] = $urlimgPath;
+        }
+
+        if ($infoCard) {
+            $infoCard->update($infoCardData);
+        } else {
+            $infoCardData['material_asset_id'] = $materialAsset->id;
+            InfoCard::create($infoCardData);
+        }
 
         return redirect()->route('materialAssets.show', $materialAsset->id);
-//        return redirect()->back()->with('status_add', 'Успешно добавлено');
     }
 
     /**

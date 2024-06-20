@@ -53,30 +53,33 @@ class OperationController extends Controller
         $quantities = $data['quantity'];
         $reason = $data['reason'] ?? '';
 
-            DB::transaction(function () use ($toWarehouseId, $reason, $materialAssetIds, $quantities) {
-                foreach ($materialAssetIds as $index => $materialAssetId) {
-                    $quantity = $quantities[$index];
+        DB::transaction(function () use ($toWarehouseId, $reason, $materialAssetIds, $quantities) {
+            foreach ($materialAssetIds as $index => $materialAssetId) {
+                $quantity = $quantities[$index];
 
-                    $operation = Operation::create([
-                        'material_asset_id' => $materialAssetId,
-                        'to_warehouse_id' => $toWarehouseId,
-                        'quantity' => $quantity,
-                        'reason' => $reason,
-                        'user_id' => '1',
-                        'movement_type' => 'in',
-                    ]);
+                $operation = Operation::create([
+                    'material_asset_id' => $materialAssetId,
+                    'to_warehouse_id' => $toWarehouseId,
+                    'quantity' => $quantity,
+                    'reason' => $reason,
+                    'user_id' => '1',
+                    'movement_type' => 'in',
+                ]);
 
-                    $inventory = Inventory::firstOrNew([
-                        'material_asset_id' => $materialAssetId,
-                        'warehouse_id' => $toWarehouseId,
-                    ]);
+                $inventory = Inventory::firstOrNew([
+                    'material_asset_id' => $materialAssetId,
+                    'warehouse_id' => $toWarehouseId,
+                ]);
 
-                    $inventory->quantity = ($inventory->quantity ?? 0) + $quantity;
-                    $inventory->save();
+                $inventory->quantity = ($inventory->quantity ?? 0) + $quantity;
+                $inventory->save();
 
-                }
-            });
-            return redirect()->back()->with('status_add', 'Успешно добавлено');
+            }
+        });
+        $warehouse = Warehouse::find($toWarehouseId);
+        $warehouseName = $warehouse->name;
+
+        return redirect()->back()->with('status_add', "Оборудование успешно добавлено на {$warehouseName}");
     }
 
     public function index_transfer()

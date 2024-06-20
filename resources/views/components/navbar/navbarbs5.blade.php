@@ -7,10 +7,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link btn btn-outline-primary btn-sm me-2" aria-current="page" href="{{ route('materialAssets.index') }}">Home</a>
+                    <a class="nav-link btn btn-outline-primary btn-sm me-2" aria-current="page" href="{{ route('materialAssets.index') }}">Главная</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link btn btn-outline-primary btn-sm me-2" href="#">Справочник</a>
+                    <a class="nav-link btn btn-outline-primary btn-sm me-2" href="{{route('materialAssets.index')}}">Справочник</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link btn btn-outline-primary btn-sm me-2 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

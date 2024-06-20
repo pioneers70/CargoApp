@@ -21,11 +21,14 @@ class UpdateMaterialAssetRequest extends FormRequest
      */
     public function rules(): array
     {
-        return             [
-            'name' => '',
-            'asset_category_id' => '',
-            'measure_unit_id' => '',
-            'tags' => '',
+        return [
+            'name' => 'required|string|max:255',
+            'asset_category_id' => 'required|integer|exists:asset_categories,id',
+            'measure_unit_id' => 'required|integer|exists:measure_units,id',
+            'tags' => 'nullable|array',
+            'tags.*' => 'integer|exists:tags,id',
+            'description' => 'nullable|string',
+            'urlimg' => 'nullable|file|mimes:jpg,jpeg,png,bmp,gif,svg,webp',
         ];
     }
 }
