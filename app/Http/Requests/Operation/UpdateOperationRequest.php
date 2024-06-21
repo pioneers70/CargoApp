@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Operation;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreAssetCategoryRequest extends FormRequest
+class UpdateOperationRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -22,8 +22,7 @@ class StoreAssetCategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'full_name' => '',
-            'short_name' => '',
+            //
         ];
     }
 }

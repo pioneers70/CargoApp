@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\VpuObject\StoreVpuObjectRequest;
+use App\Http\Requests\VpuObject\UpdateVpuObjectRequest;
 use App\Models\System;
 use App\Models\VpuObject;
-use App\Http\Requests\StoreVpuObjectRequest;
-use App\Http\Requests\UpdateVpuObjectRequest;
 
 class VpuObjectController extends Controller
 {

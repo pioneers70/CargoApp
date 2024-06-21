@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\System\StoreSystemRequest;
+use App\Http\Requests\System\UpdateSystemRequest;
 use App\Models\System;
-use App\Http\Requests\StoreSystemRequest;
-use App\Http\Requests\UpdateSystemRequest;
 
 class SystemController extends Controller
 {

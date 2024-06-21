@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\MaterialAsset\StoreMaterialAssetRequest;
+use App\Http\Requests\MaterialAsset\UpdateMaterialAssetRequest;
 use App\Models\AssetCategory;
 use App\Models\InfoCard;
 use App\Models\MaterialAsset;
-use App\Http\Requests\StoreMaterialAssetRequest;
-use App\Http\Requests\UpdateMaterialAssetRequest;
 use App\Models\MeasureUnit;
 use App\Models\Tag;
-use Random\RandomError;
 
 class MaterialAssetController extends Controller
 {
@@ -20,7 +19,7 @@ class MaterialAssetController extends Controller
     {
         $materialAssets = MaterialAsset::with('asset_category')->get();
 
-        return view('importexcel.index', compact('materialAssets'));
+        return view('MaterialAsset.index', compact('materialAssets'));
     }
 
     /**
@@ -31,7 +30,7 @@ class MaterialAssetController extends Controller
         $assetcategories = AssetCategory::all();
         $measureunits = MeasureUnit::all();
         $tags = Tag::all();
-        return view('importexcel.add', compact('assetcategories', 'tags', 'measureunits'));
+        return view('MaterialAsset.add', compact('assetcategories', 'tags', 'measureunits'));
     }
 
     /**
@@ -63,7 +62,7 @@ class MaterialAssetController extends Controller
     public function show(MaterialAsset $materialAsset)
     {
         $infocard = $materialAsset->info_card;
-        return view('importexcel.show', compact('materialAsset', 'infocard'));
+        return view('MaterialAsset.show', compact('materialAsset', 'infocard'));
     }
 
     /**
@@ -75,7 +74,7 @@ class MaterialAssetController extends Controller
         $tags = Tag::all();
         $measureunits = MeasureUnit::all();
         $infoCards = InfoCard::all();
-        return view('importexcel.edit', compact('materialAsset', 'assetcategories', 'tags', 'measureunits', 'infoCards'));
+        return view('MaterialAsset.edit', compact('materialAsset', 'assetcategories', 'tags', 'measureunits', 'infoCards'));
     }
 
     /**

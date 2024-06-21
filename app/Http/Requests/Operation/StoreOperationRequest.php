@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Operation;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreVpuObjectRequest extends FormRequest
+class StoreOperationRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,8 +22,12 @@ class StoreVpuObjectRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => '',
-            'systems'=>'',
+            'material_asset_id' => 'required|array',
+            'material_asset_id.*' => 'required|exists:material_assets,id',
+            'quantity' => 'required|array',
+            'quantity.*' => 'required|integer|min:1',
+            'to_warehouse_id' => 'required|exists:warehouses,id',
+            'reason' => 'nullable|string',
         ];
     }
 }

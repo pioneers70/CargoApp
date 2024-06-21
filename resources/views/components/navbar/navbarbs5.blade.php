@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light shadow p-3 mb-3 bg-white rounded" style="background-color: #16828c;">
+<nav class="navbar navbar-expand-lg navbar-light shadow p-3 mb-3 bg-white rounded">
     <div class="container ">
         <a class="navbar-brand" href="#">Панель управления</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

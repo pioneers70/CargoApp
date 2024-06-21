@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreAssetCategoryRequest;
-use App\Http\Requests\UpdateAssetCategoryRequest;
+use App\Http\Requests\AssetCategory\StoreAssetCategoryRequest;
+use App\Http\Requests\AssetCategory\UpdateAssetCategoryRequest;
 use App\Models\AssetCategory;
-use Illuminate\Http\Request;
 
 class AssetCategoryController extends Controller
 {

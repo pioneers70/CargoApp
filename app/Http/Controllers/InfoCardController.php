@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\InfoCard\StoreInfoCardRequest;
+use App\Http\Requests\InfoCard\UpdateInfoCardRequest;
 use App\Models\InfoCard;
-use App\Http\Requests\StoreInfoCardRequest;
-use App\Http\Requests\UpdateInfoCardRequest;
 
 class InfoCardController extends Controller
 {

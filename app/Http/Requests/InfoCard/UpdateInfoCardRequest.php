@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\InfoCard;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateAssetCategoryRequest extends FormRequest
+class UpdateInfoCardRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -22,8 +22,7 @@ class UpdateAssetCategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'full_name' => '',
-            'short_name' => '',
+            //
         ];
     }
 }

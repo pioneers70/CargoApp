@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Tag;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreOperationRequest extends FormRequest
+class StoreTagRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,12 +22,7 @@ class StoreOperationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'material_asset_id' => 'required|array',
-            'material_asset_id.*' => 'required|exists:material_assets,id',
-            'quantity' => 'required|array',
-            'quantity.*' => 'required|integer|min:1',
-            'to_warehouse_id' => 'required|exists:warehouses,id',
-            'reason' => 'nullable|string',
+            'name' => 'required',
         ];
     }
 }

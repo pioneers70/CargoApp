@@ -28,14 +28,13 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
+Route::get('/materialAssets/import', [ImportExcelController::class, 'index'])->name('materialAssets.import');
+Route::post('/materialAssets/import', [ImportExcelController::class, 'importexcel'])->name('materialAssets.add');
 
-Route::get('/materialAssets/import',[ImportExcelController::class, 'index'])->name('materialAssets.import');
-Route::post('/materialAssets/import',[ImportExcelController::class, 'importexcel'])->name('materialAssets.add');
-
-Route::get('/operations/transfer',[OperationController::class,'index_transfer'])->name('operations.index_transfer');
-Route::post('operations/transfer', [OperationController::class,'transfer'])->name('operations.transfer');
-Route::get('/operations/writeoff',[OperationController::class,'index_writeoff'])->name('operations.index_writeoff');
-Route::post('operations/writeoff', [OperationController::class,'writeoff'])->name('operations.writeoff');
+Route::get('/operations/transfer', [OperationController::class, 'index_transfer'])->name('operations.index_transfer');
+Route::post('operations/transfer', [OperationController::class, 'transfer'])->name('operations.transfer');
+Route::get('/operations/writeoff', [OperationController::class, 'index_writeoff'])->name('operations.index_writeoff');
+Route::post('operations/writeoff', [OperationController::class, 'writeoff'])->name('operations.writeoff');
 
 
 Route::resource('materialAssets', MaterialAssetController::class);
@@ -56,6 +55,5 @@ Route::put('/assets/{$materialAsset}',[MaterialAssetController::class,'update'])
 Route::delete('/assets/{$materialAsset}',[MaterialAssetController::class,'destroy'])->name('assets.destroy');*/
 
 
-
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
