@@ -43,6 +43,13 @@
                         <li><a class="dropdown-item" href="{{ route('vpuObjects.create') }}">Добавить новый объект или систему</a></li>
                     </ul>
                 </li>
+                <li class="nav-item">
+                    <form method="POST" action="{{ route('logout') }}" class="d-inline">
+                        @csrf
+                        <button type="submit" class="nav-link btn btn-outline-primary btn-sm me-2">Выйти</button>
+                    </form>
+                </li>
+
             </ul>
             <form class="d-flex">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

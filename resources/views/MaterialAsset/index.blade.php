@@ -7,6 +7,7 @@
             <th scope="col">#</th>
             <th scope="col">Название</th>
             <th scope="col">Категория</th>
+            <th scope="col">Общее количество</th>
             <th scope="col">Cправка</th>
         </tr>
         </thead>
@@ -16,6 +17,7 @@
                 <th scope="row">{{$materialAsset->id}}</th>
                 <td>{{$materialAsset->name}}</td>
                 <td>{{$materialAsset->asset_category->short_name}}</td>
+            <td>{{$materialAsset->inventories->sum('quantity')}}</td>
                 <td><a link href="{{route('materialAssets.show', $materialAsset->id )}}" class="btn btn-success">Посмотреть</a></td>
         </tr>
         @endforeach

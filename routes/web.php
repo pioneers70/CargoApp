@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AssetCategoryController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Importexcel\ImportExcelController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\MaterialAssetController;
@@ -12,9 +13,27 @@ use App\Http\Controllers\VpuObjectController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
+Auth::routes();
+
+Route::middleware('auth')->group(function () {
+    Route::resource('materialAssets', MaterialAssetController::class);
+    Route::resource('assetsCategories', AssetCategoryController::class);
+    Route::resource('tags', TagController::class);
+    Route::resource('operations', OperationController::class);
+    Route::resource('inventories', InventoryController::class);
+    Route::resource('vpuObjects', VpuObjectController::class);
+    Route::resource('systems', SystemController::class);
+
+    Route::get('/materialAssets/import', [ImportExcelController::class, 'index'])->name('materialAssets.import');
+    Route::post('/materialAssets/import', [ImportExcelController::class, 'importexcel'])->name('materialAssets.add');
+
+    Route::get('/operations/transfer', [OperationController::class, 'index_transfer'])->name('operations.index_transfer');
+    Route::post('operations/transfer', [OperationController::class, 'transfer'])->name('operations.transfer');
+    Route::get('/operations/writeoff', [OperationController::class, 'index_writeoff'])->name('operations.index_writeoff');
+    Route::post('operations/writeoff', [OperationController::class, 'writeoff'])->name('operations.writeoff');
 });
+
+Route::get('/', [HomeController::class,'index']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -24,26 +43,20 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::get('/materialAssets/import', [ImportExcelController::class, 'index'])->name('materialAssets.import');
-Route::post('/materialAssets/import', [ImportExcelController::class, 'importexcel'])->name('materialAssets.add');
-
-Route::get('/operations/transfer', [OperationController::class, 'index_transfer'])->name('operations.index_transfer');
-Route::post('operations/transfer', [OperationController::class, 'transfer'])->name('operations.transfer');
-Route::get('/operations/writeoff', [OperationController::class, 'index_writeoff'])->name('operations.index_writeoff');
-Route::post('operations/writeoff', [OperationController::class, 'writeoff'])->name('operations.writeoff');
 
 
-Route::resource('materialAssets', MaterialAssetController::class);
-Route::resource('assetsCategories', AssetCategoryController::class);
+
+
+/*Route::resource('assetsCategories', AssetCategoryController::class);
 Route::resource('tags', TagController::class);
 Route::resource('operations', OperationController::class);
 Route::resource('inventories', InventoryController::class);
 Route::resource('vpuObjects', VpuObjectController::class);
-Route::resource('systems', SystemController::class);
+Route::resource('systems', SystemController::class);*/
 
 
 /*Route::get('/assets', [MaterialAssetController::class, 'index'])->name('assets.index');
