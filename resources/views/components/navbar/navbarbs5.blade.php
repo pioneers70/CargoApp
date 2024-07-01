@@ -68,10 +68,10 @@
                     </li>
 
                 </ul>
-{{--                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Найти" aria-label="Search">
+                <form class="d-flex" action="{{ route('materialAssets.search') }}" method="GET">
+                    <input class="form-control me-2" type="search" name="query" placeholder="Найти" aria-label="Search">
                     <button class="btn btn-outline-light" type="submit">Поиск</button>
-                </form>--}}
+                </form>
             </div>
         </div>
     </nav>

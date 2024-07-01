@@ -32,6 +32,7 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/materialAssets/import', [ImportExcelController::class, 'index'])->middleware('auth')->name('materialAssets.import');
 Route::post('/materialAssets/import', [ImportExcelController::class, 'importexcel'])->middleware('auth')->name('materialAssets.add');
+Route::get('/materialAssets/search',[MaterialAssetController::class, 'search'])->middleware('auth')->name('materialAssets.search');
 
 Route::get('/operations/transfer', [OperationController::class, 'index_transfer'])->middleware('auth')->name('operations.index_transfer');
 Route::post('operations/transfer', [OperationController::class, 'transfer'])->middleware('auth')->name('operations.transfer');

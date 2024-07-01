@@ -9,6 +9,7 @@ use App\Models\InfoCard;
 use App\Models\MaterialAsset;
 use App\Models\MeasureUnit;
 use App\Models\Tag;
+use Illuminate\Http\Request;
 
 class MaterialAssetController extends Controller
 {
@@ -115,6 +116,17 @@ class MaterialAssetController extends Controller
         return redirect()->route('materialAssets.show', $materialAsset->id);
     }
 
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+        $materialAssets = MaterialAsset::where('name', 'like', "%{$query}%")->get();
+        if ($materialAssets->count() == 1) {
+            return redirect()->route('materialAssets.show', ['materialAsset' => $materialAssets->first()->id]);
+        }
+
+        // Иначе вернуть список всех найденных материалов
+        return view('MaterialAsset.index', compact('materialAssets'));
+    }
     /**
      * Remove the specified resource from storage.
      */
