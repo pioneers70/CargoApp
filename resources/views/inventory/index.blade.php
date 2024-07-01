@@ -1,8 +1,8 @@
 <x-app-import-layout>
 <div class="container">Здесь можно посмотреть остатки по складам</div>
 
-    <table class="table table-primary table-sm table-bordered table-striped mt-1">
-        <thead>
+    <table class="table table-sm table-bordered table-striped mt-1">
+        <thead style="background-color: #6c757d; color: #fff;">
         <tr>
             <th scope="col">#</th>
             <th scope="col">Склад</th>

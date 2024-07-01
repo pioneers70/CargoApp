@@ -1,3 +1,9 @@
-@tailwind base;
+@import 'bootstrap/dist/css/bootstrap.min.css';
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+@import './gradient.css';
+@import './table.css';
+@import 'navbar.css';
+/*@tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities;*/
+

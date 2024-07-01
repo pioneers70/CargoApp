@@ -1,6 +1,6 @@
 <x-app-import-layout>
 
-    <div class="container shadow p-3 mb-5 rounded">
+    <div class="container bg-gradient-dull shadow p-3 mb-5 rounded">
         <form action="{{ route('operations.transfer') }}" method="post">
             @csrf
             <label for="from_warehouse_id">Склад отправления</label>

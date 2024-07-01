@@ -1,0 +1,28 @@
+.navbar-nav .nav-item .nav-link:hover {
+    color: #fff; /* Цвет текста при наведении */
+    transform: scale(1.2); /* Увеличение кнопки при наведении */
+    transition: transform 0.2s ease-in-out; /* Плавный переход */
+}
+
+.navbar-nav .btn-outline-light:hover {
+    color: rgba(255, 255, 255, 0);
+    background-color: rgba(255, 255, 255, 0); /* Пример цвета фона при наведении */
+    border-color: rgb(10, 94, 187); /* Цвет границы при наведении */
+}
+
+.text-shadow {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Регулируйте параметры по необходимости */
+}
+
+.large-text {
+    font-size: x-large;
+}
+
+.letter-spacing {
+    letter-spacing: 2px; /* Регулируйте межбуквенное расстояние по необходимости */
+}
+
+.dropdown-menu .dropdown-hover:hover {
+    background-color: #4b43c2; /* Цвет фона при наведении */
+    color: #ffffff;
+}

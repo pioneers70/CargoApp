@@ -1,7 +1,7 @@
 <x-app-import-layout>
 
 <div class="container">Справочник</div>
-    <table class="table table-primary table-sm table-bordered table-striped mt-1">
+    <table class="table table-primary table-hover table-sm table-bordered table-striped mt-1">
         <thead>
         <tr>
             <th scope="col">#</th>

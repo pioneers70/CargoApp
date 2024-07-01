@@ -1,5 +1,5 @@
 <x-app-import-layout>
-    <div class="container shadow p-3 mb-5 rounded">
+    <div class="container shadow bg-gradient-dull p-3 mb-5 rounded">
         <form action="{{ route('operations.writeoff') }}" method="post">
             @csrf
             <div class="mb-3">

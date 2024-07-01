@@ -1,8 +1,8 @@
 <x-app-import-layout>
-    <div class="container shadow p-3 mb-5 rounded">
+    <div class="container bg-gradient-dull shadow p-3 mb-5 rounded">
         <form action="{{ route('materialAssets.store') }}" method="post" enctype="multipart/form-data">
             @csrf
-            <div class="mt-5">
+            <div class="mt-3">
                 <label for="name" class="form-label"><h2>Добавить новое оборудование</h2></label>
                 <input type="text" class="form-control" name="name" id="name" placeholder="Название">
             </div>
@@ -56,9 +56,7 @@
             </div>
         @endif
     </div>
-
-
-        <div class="container">
+        <div class="container bg-gradient-dull shadow p-3 mb-5 rounded">
             <div class="container mt-1"><h2>Добавить категорию оборудования</h2></div>
             <form action="{{ route('assetsCategories.store') }}" method="post">
                 @csrf
@@ -75,7 +73,7 @@
                 <button type="submit" class="btn btn-primary mb-2 mt-1 ">Добавить</button>
             </form>
         </div>
-        <div class="container">
+        <div class="container bg-gradient-dull shadow p-3 mb-5 rounded">
             <div><h2>Добавить новые теги</h2></div>
             <form action="{{ route('tags.store') }}" method="post">
                 @csrf
