@@ -118,14 +118,12 @@ class MaterialAssetController extends Controller
 
     public function search(Request $request)
     {
-        $query = $request->input('query');
-        $materialAssets = MaterialAsset::where('name', 'like', "%{$query}%")->get();
+        $query = $request->input('query','');
+        $materialAssets = MaterialAsset::where('name', 'like', "%{$query}%")->paginate(7);
         if ($materialAssets->count() == 1) {
             return redirect()->route('materialAssets.show', ['materialAsset' => $materialAssets->first()->id]);
         }
-
-        // Иначе вернуть список всех найденных материалов
-        return view('MaterialAsset.index', compact('materialAssets'));
+        return view('MaterialAsset.index', compact('materialAssets','query'));
     }
     /**
      * Remove the specified resource from storage.

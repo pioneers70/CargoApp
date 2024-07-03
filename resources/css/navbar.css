@@ -1,5 +1,5 @@
 .navbar-nav .nav-item .nav-link:hover {
-    color: #fff; /* Цвет текста при наведении */
+    color: #00ffff; /* Цвет текста при наведении */
     transform: scale(1.2); /* Увеличение кнопки при наведении */
     transition: transform 0.2s ease-in-out; /* Плавный переход */
 }
@@ -7,7 +7,7 @@
 .navbar-nav .btn-outline-light:hover {
     color: rgba(255, 255, 255, 0);
     background-color: rgba(255, 255, 255, 0); /* Пример цвета фона при наведении */
-    border-color: rgb(10, 94, 187); /* Цвет границы при наведении */
+    border-color: rgb(0, 255, 255); /* Цвет границы при наведении */
 }
 
 .text-shadow {
@@ -23,7 +23,7 @@
 }
 
 .dropdown-menu .dropdown-hover:hover {
-    background-color: #4b43c2; /* Цвет фона при наведении */
+    background-color: rgb(0, 193, 248); /* Цвет фона при наведении */
     color: #ffffff;
 }
 

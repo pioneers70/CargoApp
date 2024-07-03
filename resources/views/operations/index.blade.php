@@ -1,6 +1,8 @@
 <x-app-import-layout>
     <div class="container text-center">Здесь будут отображаться все операции по складам</div>
-    <div class="card ms-4 me-4 bg-gradient-dull rounded-3">
+
+    <div class="card mx-auto mt-5 mb-5 rounded-3" style="max-width: 1200px;">
+
         <div class="table-responsive ms-1 me-1 mt-3 mb-1">
             <table class="table">
                 <thead class="table">
