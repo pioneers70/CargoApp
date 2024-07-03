@@ -24,14 +24,20 @@
                                 <td>{{$materialAsset->name}}</td>
                                 <td>{{$materialAsset->asset_category->short_name}}</td>
                                 <td>{{$materialAsset->inventories->sum('quantity')}}</td>
-                                <td><a href="{{route('materialAssets.show', $materialAsset->id )}}" class="btn btn-success btn-sm">Посмотреть</a></td>
+                                <td><a href="{{route('materialAssets.show', $materialAsset->id )}}"
+                                       class="btn btn-success btn-sm">Посмотреть</a></td>
                             </tr>
                         @endforeach
                         </tbody>
                     </table>
+
                 </div>
             </div>
+
         </div>
+    </div>
+    <div class="container d-flex justify-content-center">
+        {{ $materialAssets->links() }}
     </div>
 
 

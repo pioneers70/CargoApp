@@ -9,7 +9,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-center w-100">
                     <li class="nav-item btn btn-outline-light me-1 rounded-start-pill">
-                        <a class="nav-link" aria-current="page" href="{{ route('main.index') }}">
+                        <a class="nav-link" aria-current="page" href=#>
                             <i class="bi bi-card-list"></i> Главная
                         </a>
                     </li>
@@ -60,7 +60,7 @@
                         </ul>
                     </li>
                     <li class="nav-item btn btn-outline-light me-2 rounded-end-pill">
-                        <form method="POST" action="{{ route('logout') }}" class="d-inline">
+                        <form method="POST" action="{{ route('user.logout') }}" class="d-inline">
                             @csrf
                             <button type="submit"
                                     class="nav-link"><i class="bi bi-box-arrow-left"></i> {{ Auth::user()->name }}</button>

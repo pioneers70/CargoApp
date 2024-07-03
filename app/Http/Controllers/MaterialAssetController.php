@@ -18,7 +18,7 @@ class MaterialAssetController extends Controller
      */
     public function index()
     {
-        $materialAssets = MaterialAsset::with('asset_category')->get();
+        $materialAssets = MaterialAsset::with('asset_category')->paginate(10);
 
         return view('MaterialAsset.index', compact('materialAssets'));
     }

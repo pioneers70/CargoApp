@@ -2,4 +2,14 @@
     background-color: #8956c7;
     color: #fff;
 }
+.navbar-nav .nav-item .nav-link:hover {
+    color: #fff; /* Цвет текста при наведении */
+    transform: scale(1.1); /* Увеличение кнопки при наведении */
+    transition: transform 0.2s ease-in-out; /* Плавный переход */
+}
 
+.navbar-nav .btn-outline-light:hover {
+    color: rgba(255, 255, 255, 0);
+    background-color: rgba(255, 255, 255, 0); /* Пример цвета фона при наведении */
+    border-color: rgb(10, 94, 187); /* Цвет границы при наведении */
+}

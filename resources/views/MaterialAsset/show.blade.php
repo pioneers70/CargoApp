@@ -4,7 +4,7 @@
             <div class="container text-center bg-gradient-telegram rounded-pill"><h4>{{$materialAsset->name}}</h4></div>
             <p>{{$materialAsset->asset_category->full_name}}</p>
             @if ($infocard)
-                <div class="mt5">
+                <div>
                     <h4>Описание и характеристики</h4>
                     <p>{{ $infocard->description }}</p>
                     @if ($infocard->urlimg)

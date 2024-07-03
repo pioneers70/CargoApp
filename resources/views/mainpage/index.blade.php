@@ -1,6 +1,5 @@
 <x-main-page-layout>
-
-
+    <x-navbar.navbarbs5/>
     <div class="container-fluid">
         <div class="container mx-auto mt-5 mb-5 p-6 shadow-lg rounded-lg bg-white">
             <div class="row-auto">
