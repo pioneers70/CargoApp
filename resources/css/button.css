@@ -1,0 +1,17 @@
+.btn-custom-primary {
+    background-color: #4CAF50; /* Custom primary color */
+    color: white;
+    border: none;
+}
+.btn-custom-primary:hover {
+    background-color: #45a049; /* Darker shade on hover */
+}
+
+.btn-custom-secondary {
+    background-color: #008CBA; /* Custom secondary color */
+    color: white;
+    border: none;
+}
+.btn-custom-secondary:hover {
+    background-color: #007bb5; /* Darker shade on hover */
+}

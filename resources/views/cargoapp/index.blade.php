@@ -1,24 +1,22 @@
 <x-main-page-layout>
     <header>
         <div class="container">
-            <ul class="nav justify-content-center mb-3 bg-gradient-friday">
+            <ul class="nav justify-content-center mb-5 navbar-gradient-redsunset rounded-bottom-pill shadow">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('user.registration') }}">Регистрация</a>
+                    <a class="nav-link text-white" href="{{ route('user.registration') }}">Регистрация</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Контакты</a>
+                    <a class="nav-link text-white" href="{{route('contacts')}}">Контакты</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">О приложении</a>
+                    <a class="nav-link text-white" href="#">О приложении</a>
                 </li>
             </ul>
         </div>
-
-
     </header>
-    <div class="container container-fluid justify-content-center text-center">Добро пожаловать в CargoAPP</div>
+    <div class="container justify-content-center text-center display-3 mb-5 text-shadow">Добро пожаловать в CargoAPP</div>
 
-    <div class="card d-flex align-items-center justify-content-center bg-gradient-friday" style="min-height: 70vh;">
+    <div class="container d-flex align-items-center justify-content-center bg-gradient-friday rounded shadow-lg" style="min-height: 400px; max-width: 400px; padding: 20px">
         <form class="w-100" method="POST" action="{{ route('user.login') }}" style="max-width: 400px;">
             @csrf
             <div class="mb-3">
@@ -35,7 +33,7 @@
                 <input type="checkbox" class="form-check-input" id="remember_id" name="remember">
                 <label class="form-check-label" for="remember_check">Запомнить меня</label>
             </div>
-            <button type="submit" class="btn btn-primary">Войти</button>
+            <button type="submit" class="btn btn-custom-secondary mt-4 d-flex justify-content-center w-100">Войти</button>
         </form>
     </div>
 

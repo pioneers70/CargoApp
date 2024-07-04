@@ -1,7 +1,4 @@
-.table-thead {
-    background-color: #6fa6da;
-    color: #fff;
-}
+
 .navbar-nav .nav-item .nav-link:hover {
     color: #fff; /* Цвет текста при наведении */
     transform: scale(1.1); /* Увеличение кнопки при наведении */

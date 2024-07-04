@@ -31,6 +31,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/index',function(){
     return view('cargoapp.index');
 })->name('index');
+Route::get('/contacts',function(){
+    return view('cargoapp.contacts');
+})->name('contacts');
 Route::name('user.')->group(function () {
     Route::view('/mainpage', 'mainpage.index')->middleware('userGroupAllow')->name('mainpage');
     Route::get('/', function () {

@@ -12,12 +12,14 @@
 .animate-fade-in {
     animation: fadeIn 0.5s ease-in-out;
 }
+
 .centered-container {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
 }
+
 @keyframes fadeInx {
     from {
         opacity: 0;
@@ -28,6 +30,7 @@
         transform: translateX(0);
     }
 }
+
 .animate-fade-in-x {
     animation: fadeInx 0.5s ease-in-out;
 }
