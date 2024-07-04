@@ -1,10 +1,12 @@
 <x-app-import-layout>
-    <div class="container bg-gradient-dull shadow p-3 mb-5 rounded">
-        <div class="mt-1">
-            <div class="container text-center bg-gradient-telegram rounded-pill"><h4>{{$materialAsset->name}}</h4></div>
-            <p>{{$materialAsset->asset_category->full_name}}</p>
+    <div class="card mx-auto mt-5 mb-5 bg-gradient-dull shadow-lg" style="max-width: 1200px;">
+
+            <div class="card-header bg-gradient-dull text-center"><h4>{{$materialAsset->name}}</h4></div>
+            <div class="text-center">
+                <p>{{$materialAsset->asset_category->full_name}}</p>
+            </div>
             @if ($infocard)
-                <div>
+                <div class="card-body">
                     <h4>Описание и характеристики</h4>
                     <p>{{ $infocard->description }}</p>
                     @if ($infocard->urlimg)
@@ -24,15 +26,15 @@
                         </ul>
                     </div>
                     <div class="btn-group" role="group">
-                        <a href="{{route('materialAssets.edit', $materialAsset->id )}}" class="btn btn-success me-2">Редактировать</a>
-                        <a href="{{route('materialAssets.index', $materialAsset->id )}}" class="btn btn-success me-2">Назад</a>
+                        <a href="{{route('materialAssets.edit', $materialAsset->id )}}" class="btn btn-outline-primary me-2">Редактировать</a>
+                        <a href="{{route('materialAssets.index', $materialAsset->id )}}" class="btn btn-outline-primary me-2">Назад</a>
                         <form action="{{ route('materialAssets.destroy', $materialAsset->id) }}" method="post" class="d-inline">
                             @csrf
                             @method('delete')
-                            <input type="submit" value="Удалить" class="btn btn-danger">
+                            <input type="submit" value="Удалить" class="btn btn-outline-danger">
                         </form>
                     </div>
                 </div>
-        </div>
+
     </div>
 </x-app-import-layout>

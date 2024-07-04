@@ -1,5 +1,5 @@
 <x-app-import-layout>
-    <div class="card mx-auto mt-5 mb-5 rounded-3 bg-gradient-friday" style="max-width: 1200px;">
+    <div class="card mx-auto mt-5 mb-5 rounded-3 bg-gradient-dull" style="max-width: 1200px;">
         <div class="card-header text-center mb-1">
             Объекты на ВПУ
             </div>

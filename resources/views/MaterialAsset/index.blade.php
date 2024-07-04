@@ -1,7 +1,7 @@
 <x-app-import-layout>
 
-    <div class="container">
-        <div class="card mx-auto mt-5 mb-5 rounded-3 bg-gradient-friday" style="max-width: 1200px;">
+
+        <div class="card mx-auto mt-5 mb-5 animate-fade-in shadow-lg bg-gradient-dull" style="max-width: 1200px;">
             <div class="card-header text-center mb-1">
                 Справочник
                 <div>
@@ -42,9 +42,9 @@
             </div>
 
         </div>
-    </div>
 
-    <div class="container d-flex justify-content-center">
+
+    <div class="container animate-fade-in d-flex justify-content-center">
         {{ $materialAssets->appends(['query' => request()->input('query')])->links() }}
     </div>
 

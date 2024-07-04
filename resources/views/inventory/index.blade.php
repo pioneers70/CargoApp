@@ -1,27 +1,32 @@
 <x-app-import-layout>
-    <div class="container text-center">Здесь можно посмотреть остатки по складам</div>
-    <div class="card mx-auto mt-5 mb-5 rounded-3" style="max-width: 1200px;">
+    <div class="card mx-auto mt-5 mb-5 animate-fade-in bg-gradient-dull shadow-lg" style="max-width: 1200px;">
+        <div class="card-header text-center">
+            <h3>Остатки по всем складам</h3>
+        </div>
 
-        <table class="table table-sm table-bordered table-striped mt-1">
-            <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Склад</th>
-                <th scope="col">Оборудование</th>
-                <th scope="col">Количество</th>
-            </tr>
-            </thead>
-            <tbody>
-            @foreach($inventories as $inventory)
+        <div class="card-body">
+            <table class="table table-sm table-bordered table-striped mt-1">
+                <thead>
                 <tr>
-                    <th scope="row">{{$inventory->id}}</th>
-                    <td>{{$inventory->warehouse->name}}</td>
-                    <td>{{$inventory->materialAsset->name}}</td>
-                    <td>{{$inventory->quantity}}</td>
+                    <th scope="col">#</th>
+                    <th scope="col">Склад</th>
+                    <th scope="col">Оборудование</th>
+                    <th scope="col">Количество</th>
                 </tr>
-            @endforeach
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                @foreach($inventories as $inventory)
+                    <tr>
+                        <th scope="row">{{$inventory->id}}</th>
+                        <td>{{$inventory->warehouse->name}}</td>
+                        <td>{{$inventory->materialAsset->name}}</td>
+                        <td>{{$inventory->quantity}}</td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+        </div>
+
     </div>
 
 </x-app-import-layout>

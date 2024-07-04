@@ -1,5 +1,5 @@
 <x-app-import-layout>
-    <div class="container bg-gradient-dull shadow p-3 mb-5 rounded">
+    <div class="container bg-gradient-dull animate-fade-in shadow p-3 mb-5 rounded">
         <form action="{{ route('operations.store') }}" method="post">
             @csrf
             <div id="items-container">
