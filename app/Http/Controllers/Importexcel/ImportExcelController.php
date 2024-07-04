@@ -19,12 +19,12 @@ class ImportExcelController extends Controller
         $request->validate([
             'import_file' => [
                 'required',
-                'file'
+                'file',
             ],
         ]);
         Excel::import(new MaterialAssetImport, $request->file('import_file'));
+
         return redirect()->back()->with('status', 'Успешно импортировано');
 
     }
-
 }

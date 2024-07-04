@@ -23,6 +23,7 @@ class OperationController extends Controller
     public function index()
     {
         $operations = Operation::with(['materialAsset', 'fromWarehouse', 'toWarehouse', 'vpuObject'])->get();
+
         return view('operations.index', compact('operations'));
 
     }
@@ -85,6 +86,7 @@ class OperationController extends Controller
     {
         $warehouses = Warehouse::all();
         $materialassets = MaterialAsset::all();
+
         return view('operations.transfer', compact('warehouses', 'materialassets'));
     }
 
@@ -112,7 +114,7 @@ class OperationController extends Controller
                     ->firstOrFail();
 
                 if ($fromInventory->quantity < $quantity) {
-                    throw new \Exception("Недостаточно количества материала на исходном складе");
+                    throw new \Exception('Недостаточно количества материала на исходном складе');
                 }
 
                 $fromInventory->quantity -= $quantity;
@@ -145,6 +147,7 @@ class OperationController extends Controller
         $vpuObjects = VpuObject::all();
         $warehouses = Warehouse::all();
         $materialAssets = MaterialAsset::all();
+
         return view('operations.writeoff', compact('vpuObjects', 'warehouses', 'materialAssets'));
 
     }
@@ -175,7 +178,7 @@ class OperationController extends Controller
                     ->firstOrFail();
 
                 if ($fromInventory->quantity < $quantity) {
-                    throw new \Exception("Недостаточно количества материала на складе");
+                    throw new \Exception('Недостаточно количества материала на складе');
                 }
                 $fromInventory->quantity -= $quantity;
                 $fromInventory->save();
@@ -191,9 +194,9 @@ class OperationController extends Controller
                 ]);
             }
         });
+
         return redirect()->back()->with('status', 'Списание проведено успешно');
     }
-
 
     /**
      * Display the specified resource.

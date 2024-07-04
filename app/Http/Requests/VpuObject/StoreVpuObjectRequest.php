@@ -23,7 +23,7 @@ class StoreVpuObjectRequest extends FormRequest
     {
         return [
             'name' => '',
-            'systems'=>'',
+            'systems' => '',
         ];
     }
 }

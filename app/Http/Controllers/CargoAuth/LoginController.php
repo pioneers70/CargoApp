@@ -8,12 +8,10 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-
-
     public function login(Request $request)
     {
 
-        if (Auth::check()){
+        if (Auth::check()) {
             return redirect()->intended(route('user.mainpage'));
         }
 
@@ -21,6 +19,7 @@ class LoginController extends Controller
         if (Auth::attempt($data)) {
             return redirect()->intended(route('user.mainpage'));
         }
+
         return redirect(route('user.login'))->withErrors([
             'email' => 'Не удалось авторизоваться ']);
     }
