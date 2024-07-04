@@ -3,7 +3,7 @@
         <div class="container">
             <ul class="nav justify-content-center mb-3 bg-gradient-friday">
                 <li class="nav-item">
-{{--                    <a class="nav-link" href="{{ route('registration') }}}">Регистрация</a>--}}
+                    <a class="nav-link" href="{{ route('user.registration') }}">Регистрация</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Контакты</a>

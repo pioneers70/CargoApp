@@ -20,6 +20,7 @@
                        autocomplete="current-password">
             </div>
             <button type="submit" class="btn btn-primary">Регистрация</button>
+            <a href="{{route('index')}}" class="btn btn-outline-primary me-2">Назад</a>
         </form>
     </div>
 

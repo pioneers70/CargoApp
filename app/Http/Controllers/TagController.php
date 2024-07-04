@@ -31,6 +31,7 @@ class TagController extends Controller
     {
         $data = $request->validated();
         Tag::create($data);
+
         return redirect()->back()->with('status_add', 'Успешно добавлено');
     }
 

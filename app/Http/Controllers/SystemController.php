@@ -19,10 +19,7 @@ class SystemController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-
-    }
+    public function create() {}
 
     /**
      * Store a newly created resource in storage.
@@ -31,6 +28,7 @@ class SystemController extends Controller
     {
         $data = $request->validated();
         System::create($data);
+
         return redirect()->back()->with('status_add', 'Успешно добавлено');
     }
 

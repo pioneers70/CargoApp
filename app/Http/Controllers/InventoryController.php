@@ -15,9 +15,10 @@ class InventoryController extends Controller
     public function index()
     {
         $inventories = Inventory::with(['materialAsset', 'warehouse'])->get();
- /*       $materialassets = MaterialAsset::all();
-        $warehouses = Warehouse::all();*/
-        return view('inventory.index',compact('inventories'));
+
+        /*       $materialassets = MaterialAsset::all();
+               $warehouses = Warehouse::all();*/
+        return view('inventory.index', compact('inventories'));
     }
 
     /**

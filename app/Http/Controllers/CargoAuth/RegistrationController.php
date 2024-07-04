@@ -11,7 +11,7 @@ class RegistrationController extends Controller
 {
     public function save(Request $request)
     {
-        if (Auth::check()){
+        if (Auth::check()) {
             return redirect(route('user.mainpage'));
         }
         $validateForms = $request->validate([
@@ -21,16 +21,18 @@ class RegistrationController extends Controller
         ]);
         if (User::were('email', $validateForms['email'])->exists()) {
             return redirect(route('user.registration'))->withErrors([
-                'email' => 'Пользователь с таким email уже зарегистрирован'
+                'email' => 'Пользователь с таким email уже зарегистрирован',
             ]);
         }
-        $user  = User::create($validateForms);
-        if ($user){
+        $user = User::create($validateForms);
+        if ($user) {
             Auth::login($user);
+
             return redirect(route('user.mainpage'));
         }
+
         return redirect(route('user.login'))->withErrors([
-            'formError' => 'Произошла ошибка при регистрации пользователя'
+            'formError' => 'Произошла ошибка при регистрации пользователя',
         ]);
     }
 }

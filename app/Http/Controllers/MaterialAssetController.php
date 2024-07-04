@@ -31,6 +31,7 @@ class MaterialAssetController extends Controller
         $assetcategories = AssetCategory::all();
         $measureunits = MeasureUnit::all();
         $tags = Tag::all();
+
         return view('MaterialAsset.add', compact('assetcategories', 'tags', 'measureunits'));
     }
 
@@ -42,7 +43,7 @@ class MaterialAssetController extends Controller
         $data = $request->validated();
         $tags = $data['tags'] ?? [];
         $materialAsset = MaterialAsset::create($data);
-        if (!empty($tags)) {
+        if (! empty($tags)) {
             $materialAsset->tags()->attach($tags);
         }
         $urlimgPath = null;
@@ -54,6 +55,7 @@ class MaterialAssetController extends Controller
             'description' => $data['description'],
             'urlimg' => $urlimgPath,
         ]);
+
         return redirect()->back()->with('status_add', 'Успешно добавлено');
     }
 
@@ -63,6 +65,7 @@ class MaterialAssetController extends Controller
     public function show(MaterialAsset $materialAsset)
     {
         $infocard = $materialAsset->info_card;
+
         return view('MaterialAsset.show', compact('materialAsset', 'infocard'));
     }
 
@@ -75,6 +78,7 @@ class MaterialAssetController extends Controller
         $tags = Tag::all();
         $measureunits = MeasureUnit::all();
         $infoCards = InfoCard::all();
+
         return view('MaterialAsset.edit', compact('materialAsset', 'assetcategories', 'tags', 'measureunits', 'infoCards'));
     }
 
@@ -118,13 +122,15 @@ class MaterialAssetController extends Controller
 
     public function search(Request $request)
     {
-        $query = $request->input('query','');
+        $query = $request->input('query', '');
         $materialAssets = MaterialAsset::where('name', 'like', "%{$query}%")->paginate(7);
         if ($materialAssets->count() == 1) {
             return redirect()->route('materialAssets.show', ['materialAsset' => $materialAssets->first()->id]);
         }
-        return view('MaterialAsset.index', compact('materialAssets','query'));
+
+        return view('MaterialAsset.index', compact('materialAssets', 'query'));
     }
+
     /**
      * Remove the specified resource from storage.
      */
@@ -132,6 +138,7 @@ class MaterialAssetController extends Controller
     {
 
         $materialAsset->delete();
+
         return redirect()->route('materialAssets.index');
     }
 }

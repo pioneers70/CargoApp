@@ -15,7 +15,8 @@ class VpuObjectController extends Controller
     public function index()
     {
         $vpuObjects = VpuObject::with('systems')->get();
-        return view('vpuObject.index',compact('vpuObjects'));
+
+        return view('vpuObject.index', compact('vpuObjects'));
     }
 
     /**
@@ -24,6 +25,7 @@ class VpuObjectController extends Controller
     public function create()
     {
         $systems = System::all();
+
         return view('vpuObject.create', compact('systems'));
     }
 
@@ -37,6 +39,7 @@ class VpuObjectController extends Controller
         unset($data['systems']);
         $vpuObject = VpuObject::create($data);
         $vpuObject->systems()->attach($systems);
+
         return redirect()->back()->with('status_add', 'Успешно добавлено');
     }
 

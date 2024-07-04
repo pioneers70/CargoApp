@@ -35,10 +35,7 @@ class InfoCardController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(InfoCard $infoCard)
-    {
-
-    }
+    public function show(InfoCard $infoCard) {}
 
     /**
      * Show the form for editing the specified resource.
