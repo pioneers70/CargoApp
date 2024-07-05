@@ -33,7 +33,9 @@
                 <input type="checkbox" class="form-check-input" id="remember_id" name="remember">
                 <label class="form-check-label" for="remember_check">Запомнить меня</label>
             </div>
-            <button type="submit" class="btn btn-custom-secondary mt-4 d-flex justify-content-center w-100">Войти</button>
+            <button type="submit" class="btn btn-custom-secondary mt-4 d-flex justify-content-center w-100">
+                <i class="icon-right-circled"></i> Войти
+            </button>
         </form>
     </div>
 

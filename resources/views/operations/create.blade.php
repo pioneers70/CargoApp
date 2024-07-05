@@ -1,5 +1,4 @@
 <x-app-import-layout>
-
     <div class="container justify-content-center text-center display-6 mb-3 text-shadow">Операция поступление</div>
 
     <div class="container bg-gradient-dull animate-fade-in shadow p-3 mb-5 rounded">
@@ -9,7 +8,7 @@
                 <div class="row g-3 align-items-center item">
                     <div class="col-auto">
                         <label for="material_asset_id_0" class="form-label">Оборудование</label>
-                        <select class="form-select form-select-sm" name="material_asset_id[]" id="material_asset_id_0">
+                        <select class="form-select form-select-sm select-single" name="material_asset_id[]" id="material_asset_id_0">
                             <option selected>Выберете оборудование или инструмент</option>
                             @foreach($materialassets as $materialasset)
                                 <option value="{{ $materialasset->id }}">{{ $materialasset->name }}</option>
@@ -45,34 +44,4 @@
             </div>
         @endif
     </div>
-
-    <script>
-        document.getElementById('add-item').addEventListener('click', function () {
-            const container = document.getElementById('items-container');
-            const index = container.children.length;
-
-            const newItem = document.createElement('div');
-            newItem.classList.add('row', 'g-3', 'align-items-center', 'item');
-
-            newItem.innerHTML = `
-            <div class="col-auto">
-                <label for="material_asset_id_${index}" class="form-label">Оборудование</label>
-                <select class="form-select form-select-sm" name="material_asset_id[]" id="material_asset_id_${index}">
-                    <option selected>Выберете оборудование или инструмент</option>
-                    @foreach($materialassets as $materialasset)
-            <option value="{{ $materialasset->id }}">{{ $materialasset->name }}</option>
-                    @endforeach
-            </select>
-        </div>
-        <div class="col-auto">
-            <label for="quantity_${index}" class="form-label">Сколько</label>
-                <input type="text" class="form-control form-control-sm" name="quantity[]" id="quantity_${index}" placeholder="сколько">
-            </div>
-        `;
-
-            container.appendChild(newItem);
-        });
-    </script>
-
-
 </x-app-import-layout>
