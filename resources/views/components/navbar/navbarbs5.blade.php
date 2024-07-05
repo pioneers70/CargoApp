@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-lg navbar-dark navbar-gradient-redsunset shadow-lg p-3 mb-5">
+<nav class="navbar navbar-expand-lg navbar-dark navbar-gradient-redsunset rounded-bottom-pill shadow-lg p-3 mb-5">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#"><i class="bi bi-boxes large-text"></i> <b
+        <a class="navbar-brand ms-5" href="#"><i class="bi bi-boxes large-text"></i> <b
                 class="text-shadow large-text letter-spacing">CargoAPP</b></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -9,7 +9,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <div class="d-flex flex-grow-1 justify-content-center">
 
-                <ul class="navbar-nav mb-2 mb-lg-0">
+                <ul class="navbar-nav mb-2 me-5 mb-lg-0">
                     <li class="nav-item btn btn-outline-light me-1 rounded-start-pill">
                         <a class="nav-link" aria-current="page" href={{route('user.mainpage')}}>
                             <i class="bi bi-card-list"></i> Главная

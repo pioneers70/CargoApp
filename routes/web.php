@@ -28,12 +28,14 @@ use Illuminate\Support\Facades\Route;
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });*/
-Route::get('/index',function(){
+Route::get('/index', function () {
     return view('cargoapp.index');
 })->name('index');
-Route::get('/contacts',function(){
+
+Route::get('/contacts', function () {
     return view('cargoapp.contacts');
 })->name('contacts');
+
 Route::name('user.')->group(function () {
     Route::view('/mainpage', 'mainpage.index')->middleware('userGroupAllow')->name('mainpage');
     Route::get('/', function () {

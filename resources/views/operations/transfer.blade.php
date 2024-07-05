@@ -1,5 +1,5 @@
 <x-app-import-layout>
-
+    <div class="container justify-content-center text-center display-6 mb-3 text-shadow">Операция перемещение</div>
     <div class="container bg-gradient-dull animate-fade-in shadow p-3 mb-5 rounded">
         <form action="{{ route('operations.transfer') }}" method="post">
             @csrf

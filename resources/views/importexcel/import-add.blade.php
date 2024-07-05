@@ -8,7 +8,7 @@
             <div class="col-md-8 mt-5">
                 <div class="card animate-fade-in-x bg-gradient-dull">
                     <div class="card-header">
-                        <h2 class="text-center"><b class="text-shadow">Импорт данных Excel в БД</b></h2>
+                        <h2 class="text-center display-6 text-shadow">Импорт данных Excel в БД</h2>
                     </div>
                     <div class="card-body">
                         <form action="{{ route('materialAssets.add') }}" method="POST" enctype="multipart/form-data">

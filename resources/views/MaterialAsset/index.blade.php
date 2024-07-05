@@ -2,11 +2,11 @@
 
 
         <div class="card mx-auto mt-5 mb-5 animate-fade-in shadow-lg bg-gradient-dull" style="max-width: 1200px;">
-            <div class="card-header text-center mb-1">
+            <div class="card-header text-center mb-1 display-6">
                 Справочник
                 <div>
                     <form class="d-flex" action="{{ route('materialAssets.search') }}" method="GET">
-                        <input class="form-control me-2 mb-1" type="search" name="query" placeholder="Поиск оборудования"
+                        <input class="form-control mt-1 me-2 mb-1" type="search" name="query" placeholder="Поиск оборудования"
                                aria-label="Search" value="{{ request()->input('query') }}">
                         <button class="btn btn-outline-light" type="submit">Поиск</button>
                     </form>

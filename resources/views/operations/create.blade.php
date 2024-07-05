@@ -1,4 +1,7 @@
 <x-app-import-layout>
+
+    <div class="container justify-content-center text-center display-6 mb-3 text-shadow">Операция поступление</div>
+
     <div class="container bg-gradient-dull animate-fade-in shadow p-3 mb-5 rounded">
         <form action="{{ route('operations.store') }}" method="post">
             @csrf
@@ -15,7 +18,9 @@
                     </div>
                     <div class="col-auto">
                         <label for="quantity_0" class="form-label">Сколько</label>
-                        <input type="text" class="form-control form-control-sm" name="quantity[]" id="quantity_0" placeholder="сколько"></div>
+                        <input type="text" class="form-control form-control-sm" name="quantity[]" id="quantity_0"
+                               placeholder="сколько">
+                    </div>
                 </div>
             </div>
             <button type="button" id="add-item" class="btn btn-outline-primary mt-3">Добавить позицию</button>

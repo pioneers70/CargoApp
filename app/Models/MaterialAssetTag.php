@@ -8,11 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class MaterialAssetTag extends Model
 {
     use HasFactory;
-    protected $table ='material_asset_tags';
+
+    protected $table = 'material_asset_tags';
+
     protected $guarded = false;
+
     protected $fillable = [
-       'material_asset_id',
+        'material_asset_id',
         'tag_id',
     ];
-
 }

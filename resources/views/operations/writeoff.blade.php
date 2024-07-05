@@ -1,4 +1,5 @@
 <x-app-import-layout>
+    <div class="container justify-content-center text-center display-6 mb-3 text-shadow">Операция списание</div>
     <div class="container shadow animate-fade-in bg-gradient-dull p-3 mb-5 rounded">
         <form action="{{ route('operations.writeoff') }}" method="post">
             @csrf

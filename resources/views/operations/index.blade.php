@@ -2,7 +2,7 @@
 
 
     <div class="card mx-auto mt-5 mb-5 animate-fade-in bg-gradient-dull shadow-lg" style="max-width: 1200px;">
-        <div class="card-header bg-gradient-dull text-center"><h3>Все операции</h3></div>
+        <div class="card-header bg-gradient-dull text-center display-6">Все операции</div>
         <div class="card-body">
             <div class="table-responsive ms-1 me-1 mt-3 mb-1">
                 <table class="table">

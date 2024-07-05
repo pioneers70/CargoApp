@@ -1,7 +1,7 @@
 <x-app-import-layout>
     <div class="card mx-auto mt-5 mb-5 animate-fade-in bg-gradient-dull shadow-lg" style="max-width: 1200px;">
-        <div class="card-header text-center">
-            <h3>Остатки по всем складам</h3>
+        <div class="card-header text-center display-6">
+            Остатки по всем складам
         </div>
 
         <div class="card-body">

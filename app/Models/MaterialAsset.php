@@ -14,7 +14,9 @@ class MaterialAsset extends Model
     use HasFactory;
 
     protected $table = 'material_assets';
+
     protected $guarded = false;
+
     protected $fillable = [
         'name',
         'asset_category_id',
@@ -25,25 +27,29 @@ class MaterialAsset extends Model
     {
         return $this->belongsTo(AssetCategory::class, 'asset_category_id');
     }
+
     public function measure_unit(): BelongsTo
     {
         return $this->belongsTo(MeasureUnit::class);
     }
+
     public function tags(): BelongsToMany
     {
-        return $this->belongsToMany(Tag::class,'material_asset_tags','material_asset_id','tag_id');
+        return $this->belongsToMany(Tag::class, 'material_asset_tags', 'material_asset_id', 'tag_id');
     }
+
     public function inventories(): HasMany
     {
-       return $this->hasMany(Inventory::class);
+        return $this->hasMany(Inventory::class);
     }
+
     public function operations(): HasMany
     {
         return $this->hasMany(Operation::class);
     }
+
     public function info_card(): HasOne
     {
-        return $this->HasOne(InfoCard::class,'material_asset_id');
+        return $this->HasOne(InfoCard::class, 'material_asset_id');
     }
 }
-
