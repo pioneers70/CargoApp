@@ -17,8 +17,7 @@
                     </div>
                     <div class="col-auto">
                         <label for="quantity_0" class="form-label">Сколько</label>
-                        <input type="text" class="form-control form-control-sm" name="quantity[]" id="quantity_0"
-                               placeholder="сколько">
+                        <input type="text" class="form-control form-control-sm" name="quantity[]" id="quantity_0" placeholder="сколько">
                     </div>
                 </div>
             </div>
@@ -44,4 +43,7 @@
             </div>
         @endif
     </div>
+    <script>
+        const materialAssets = @json($materialassets);
+    </script>
 </x-app-import-layout>
