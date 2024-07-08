@@ -13,7 +13,7 @@
             </div>
             <div class="mb-3">
                 <label for="vpu_object_id" class="form-label">Выберите объект VPU</label>
-                <select name="vpu_object_id" id="vpu_object_id" class="form-select">
+                <select name="vpu_object_id" id="vpu_object_id" class="form-select form-select2-sm">
                     @foreach($vpuObjects as $vpuObject)
                         <option value="{{ $vpuObject->id }}">{{ $vpuObject->name }}</option>
                     @endforeach
@@ -22,7 +22,7 @@
             <div id="items-container">
                 <div class="item mb-3">
                     <label for="material_asset_id_0" class="form-label">Оборудование</label>
-                    <select name="items[0][material_asset_id]" id="material_asset_id_0" class="form-select">
+                    <select name="items[0][material_asset_id]" id="material_asset_id_0" class="form-select form-select2-sm">
                         @foreach($materialAssets as $materialAsset)
                             <option value="{{ $materialAsset->id }}">{{ $materialAsset->name }}</option>
                         @endforeach

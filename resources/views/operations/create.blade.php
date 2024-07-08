@@ -8,7 +8,7 @@
                 <div class="row g-3 align-items-center item">
                     <div class="col-auto">
                         <label for="material_asset_id_0" class="form-label">Оборудование</label>
-                        <select class="form-select form-select-sm select-single" name="material_asset_id[]" id="material_asset_id_0">
+                        <select class="form-select form-select-sm form-select2-sm" name="material_asset_id[]" id="material_asset_id_0">
                             <option selected>Выберете оборудование или инструмент</option>
                             @foreach($materialassets as $materialasset)
                                 <option value="{{ $materialasset->id }}">{{ $materialasset->name }}</option>
@@ -25,7 +25,7 @@
             <button type="button" id="add-item" class="btn btn-outline-primary mt-3">Добавить позицию</button>
             <div class="mt-3">
                 <label for="to_warehouse_id" class="form-label">Склад</label>
-                <select class="form-select form-select-sm" name="to_warehouse_id" id="to_warehouse_id">
+                <select class="form-select form-select-sm form-select2-sm" name="to_warehouse_id" id="to_warehouse_id">
                     <option selected>Выберите склад</option>
                     @foreach($warehouses as $warehouse)
                         <option value="{{ $warehouse->id }}">{{ $warehouse->name }}</option>

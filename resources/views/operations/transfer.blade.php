@@ -23,7 +23,7 @@
                 <div class="row g-3 align-items-center item">
                     <div class="col-auto">
                         <label for="material_asset_id_0" class="form-label">Оборудование</label>
-                        <select class="form-select form-select-sm" name="items[0][material_asset_id]" id="material_asset_id_0">
+                        <select class="form-select form-select-sm form-select2-sm" name="items[0][material_asset_id]" id="material_asset_id_0">
                             <option selected>Выберете оборудование или инструмент</option>
                             @foreach($materialassets as $materialasset)
                                 <option value="{{ $materialasset->id }}">{{ $materialasset->name }}</option>
