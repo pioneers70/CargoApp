@@ -16,6 +16,7 @@
                         <th scope="col">Количество</th>
                         <th scope="col">Нa какой объект</th>
                         <th scope="col">Причина</th>
+                        <th scope="col">Ответственный</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -29,12 +30,16 @@
                             <td>{{$operation->quantity}}</td>
                             <td>{{$operation->vpuObject->name ?? '-'}}</td>
                             <td>{{$operation->reason}}</td>
+                            <td>{{$operation->users->name?? '-'}}</td>
                         </tr>
                     @endforeach
                     </tbody>
                 </table>
             </div>
         </div>
+    </div>
+    <div class="container animate-fade-in d-flex justify-content-center">
+        {{ $operations->links() }}
     </div>
 </x-app-import-layout>
 

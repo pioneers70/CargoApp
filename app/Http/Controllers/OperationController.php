@@ -13,6 +13,7 @@ use App\Models\Tag;
 use App\Models\VpuObject;
 use App\Models\Warehouse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class OperationController extends Controller
@@ -22,7 +23,7 @@ class OperationController extends Controller
      */
     public function index()
     {
-        $operations = Operation::with(['materialAsset', 'fromWarehouse', 'toWarehouse', 'vpuObject'])->get();
+        $operations = Operation::with(['materialAsset', 'fromWarehouse', 'toWarehouse', 'vpuObject'])->paginate(8);
 
         return view('operations.index', compact('operations'));
 
@@ -52,8 +53,10 @@ class OperationController extends Controller
         $toWarehouseId = $data['to_warehouse_id'];
         $quantities = $data['quantity'];
         $reason = $data['reason'] ?? '';
+        $user_id = Auth::id();
+        $operation_type = 'in';
 
-        DB::transaction(function () use ($toWarehouseId, $reason, $materialAssetIds, $quantities) {
+        DB::transaction(function () use ($toWarehouseId, $reason, $materialAssetIds, $quantities, $user_id, $operation_type) {
             foreach ($materialAssetIds as $index => $materialAssetId) {
                 $quantity = $quantities[$index];
 
@@ -62,8 +65,8 @@ class OperationController extends Controller
                     'to_warehouse_id' => $toWarehouseId,
                     'quantity' => $quantity,
                     'reason' => $reason,
-                    'user_id' => '1',
-                    'movement_type' => 'in',
+                    'user_id' => $user_id,
+                    'movement_type' => $operation_type,
                 ]);
 
                 $inventory = Inventory::firstOrNew([
@@ -103,8 +106,10 @@ class OperationController extends Controller
         $fromWarehouseId = $validatedData['from_warehouse_id'];
         $toWarehouseId = $validatedData['to_warehouse_id'];
         $items = $validatedData['items'];
+        $operation_type = 'out';
+        $user_id = Auth::id();
 
-        DB::transaction(function () use ($fromWarehouseId, $toWarehouseId, $items) {
+        DB::transaction(function () use ($fromWarehouseId, $toWarehouseId, $items, $operation_type, $user_id) {
             foreach ($items as $item) {
                 $materialAssetId = $item['material_asset_id'];
                 $quantity = $item['quantity'];
@@ -133,8 +138,8 @@ class OperationController extends Controller
                     'from_warehouse_id' => $fromWarehouseId,
                     'to_warehouse_id' => $toWarehouseId,
                     'quantity' => $quantity,
-                    'operation_type' => 'out',
-                    'user_id' => '1',
+                    'type_movement' => $operation_type,
+                    'user_id' => $user_id,
                 ]);
             }
         });
@@ -167,8 +172,10 @@ class OperationController extends Controller
         $items = $validatedData['items'];
         $vpuObject = $validatedData['vpu_object_id'];
         $reason = $validatedData['reason'];
+        $user_id = Auth::id();
+        $operation_type = 'out';
 
-        DB::transaction(function () use ($reason, $vpuObject, $fromWarehouseId, $items) {
+        DB::transaction(function () use ($reason, $vpuObject, $fromWarehouseId, $items, $user_id, $operation_type) {
             foreach ($items as $item) {
                 $materialAssetId = $item['material_asset_id'];
                 $quantity = $item['quantity'];
@@ -187,8 +194,8 @@ class OperationController extends Controller
                     'material_asset_id' => $materialAssetId,
                     'from_warehouse_id' => $fromWarehouseId,
                     'quantity' => $quantity,
-                    'operation_type' => 'out',
-                    'user_id' => '1',
+                    'type_movement' => $operation_type,
+                    'user_id' => $user_id,
                     'vpu_object_id' => $vpuObject,
                     'reason' => $reason,
                 ]);

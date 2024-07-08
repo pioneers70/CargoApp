@@ -7,7 +7,7 @@
             <div id="items-container">
                 <div class="row g-3 align-items-center item">
                     <div class="col-auto">
-                        <label for="material_asset_id_0" class="form-label">Оборудование</label>
+                        <label for="material_asset_id_0" class="form-label h4">Оборудование</label>
                         <select class="form-select form-select-sm form-select2-sm" name="material_asset_id[]" id="material_asset_id_0">
                             <option selected>Выберете оборудование или инструмент</option>
                             @foreach($materialassets as $materialasset)
@@ -16,14 +16,14 @@
                         </select>
                     </div>
                     <div class="col-auto">
-                        <label for="quantity_0" class="form-label">Сколько</label>
+                        <label for="quantity_0" class="form-label h4">Сколько</label>
                         <input type="text" class="form-control form-control-sm" name="quantity[]" id="quantity_0" placeholder="сколько">
                     </div>
                 </div>
             </div>
             <button type="button" id="add-item" class="btn btn-outline-primary mt-3">Добавить позицию</button>
             <div class="mt-3">
-                <label for="to_warehouse_id" class="form-label">Склад</label>
+                <label for="to_warehouse_id" class="form-label h4">Склад</label>
                 <select class="form-select form-select-sm form-select2-sm" name="to_warehouse_id" id="to_warehouse_id">
                     <option selected>Выберите склад</option>
                     @foreach($warehouses as $warehouse)
@@ -32,7 +32,7 @@
                 </select>
             </div>
             <div class="form-group mt-3">
-                <label for="reason" class="form-label">Причина</label>
+                <label for="reason" class="form-label h4">Причина</label>
                 <textarea name="reason" id="reason" class="form-control"></textarea>
             </div>
             <button type="submit" class="btn btn-outline-success mt-3">Добавить</button>

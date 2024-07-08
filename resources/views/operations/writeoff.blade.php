@@ -36,7 +36,7 @@
                 <textarea name="reason" id="reason" class="form-control"></textarea>
             </div>
 
-            <button type="button" id="add-item" class="btn btn-secondary">Добавить элемент</button>
+{{--            <button type="button" id="add-item" class="btn btn-secondary">Добавить элемент</button>--}}
             <button type="submit" class="btn btn-primary">Списать</button>
         </form>
         @if(session('status'))
@@ -47,7 +47,7 @@
     </div>
 
 
-    <script>
+{{--    <script>
         document.getElementById('add-item').addEventListener('click', function () {
             const container = document.getElementById('items-container');
             const index = container.children.length;
@@ -68,7 +68,7 @@
 
             container.appendChild(newItem);
         });
-    </script>
+    </script>--}}
 
 
 </x-app-import-layout>
