@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Operation\StoreOperationRequest;
+use App\Http\Requests\Operation\StoreTransferRequest;
+use App\Http\Requests\Operation\StoreWriteoffRequest;
 use App\Http\Requests\Operation\UpdateOperationRequest;
 use App\Models\AssetCategory;
 use App\Models\Inventory;
@@ -93,16 +95,9 @@ class OperationController extends Controller
         return view('operations.transfer', compact('warehouses', 'materialassets'));
     }
 
-    public function transfer(Request $request)
+    public function transfer(StoreTransferRequest $request)
     {
-        $validatedData = $request->validate([
-            'from_warehouse_id' => 'required|exists:warehouses,id',
-            'to_warehouse_id' => 'required|exists:warehouses,id',
-            'items' => 'required|array',
-            'items.*.material_asset_id' => 'required|exists:material_assets,id',
-            'items.*.quantity' => 'required|numeric|min:1',
-        ]);
-
+        $validatedData = $request->validated();
         $fromWarehouseId = $validatedData['from_warehouse_id'];
         $toWarehouseId = $validatedData['to_warehouse_id'];
         $items = $validatedData['items'];
@@ -157,23 +152,15 @@ class OperationController extends Controller
 
     }
 
-    public function writeoff(Request $request)
+    public function writeoff(StoreWriteoffRequest $request)
     {
-        $validatedData = $request->validate([
-            'from_warehouse_id' => 'required|exists:warehouses,id',
-            'items' => 'required|array',
-            'items.*.material_asset_id' => 'required|exists:material_assets,id',
-            'items.*.quantity' => 'required|numeric|min:1',
-            'vpu_object_id' => 'required|exists:vpu_objects,id',
-            'reason' => 'required|string',
-        ]);
-
+        $validatedData = $request->validated();
         $fromWarehouseId = $validatedData['from_warehouse_id'];
         $items = $validatedData['items'];
         $vpuObject = $validatedData['vpu_object_id'];
         $reason = $validatedData['reason'];
-        $user_id = Auth::id();
         $operation_type = 'out';
+        $user_id = Auth::id();
 
         DB::transaction(function () use ($reason, $vpuObject, $fromWarehouseId, $items, $user_id, $operation_type) {
             foreach ($items as $item) {
