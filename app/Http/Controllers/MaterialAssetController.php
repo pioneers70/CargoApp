@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Filters\MaterialAssetFilter;
+use App\Http\Requests\Filter\FilterRequest;
 use App\Http\Requests\MaterialAsset\StoreMaterialAssetRequest;
 use App\Http\Requests\MaterialAsset\UpdateMaterialAssetRequest;
 use App\Models\AssetCategory;
@@ -16,11 +18,17 @@ class MaterialAssetController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(FilterRequest $request)
     {
-        $materialAssets = MaterialAsset::with('asset_category')->paginate(10);
+        $data = $request->validated();
+        $filter = app()->make(MaterialAssetFilter::class, ['queryParams' => array_filter($data)]);
+        $assets = MaterialAsset::filter($filter)->get();
+        dd($assets);
 
-        return view('MaterialAsset.index', compact('materialAssets'));
+        //        $materialAssets = MaterialAsset::with('asset_category')->paginate(10);
+        //        $assetCategories = AssetCategory::all();
+
+        //        return view('MaterialAsset.index', compact('materialAssets', 'assetCategories'));
     }
 
     /**

@@ -21,15 +21,15 @@ class StoreMaterialAssetRequest extends FormRequest
      */
     public function rules(): array
     {
-    return [
-        'name' => 'required|string',
-        'asset_category_id' => 'required|exists:asset_categories,id',
-        'measure_unit_id' => 'required|exists:measure_units,id',
-        'tags' => 'sometimes|array',
-        'tags.*' => 'exists:tags,id',
-        'description' => 'nullable|string',
-        'urlimg' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-    ];
+        return [
+            'name' => 'required|string',
+            'asset_category_id' => 'required|exists:asset_categories,id',
+            'measure_unit_id' => 'required|exists:measure_units,id',
+            'tags' => 'sometimes|array',
+            'tags.*' => 'exists:tags,id',
+            'description' => 'nullable|string',
+            'urlimg' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ];
 
     }
 }

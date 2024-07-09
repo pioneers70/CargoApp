@@ -12,6 +12,22 @@
                     </form>
                 </div>
             </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <form action="#" method="GET">
+                            <div class="form-label">Выберите категорию</div>
+                            <select class="form-select form-select-sm" name="asset_category_id" id="asset_category_id">
+                                @foreach($assetCategories as $assetCategory)
+                                    <option value="{{ $assetCategory->id }}">{{ $assetCategory->short_name }}</option>
+                                @endforeach
+                            </select>
+                            <button type="submit" class="btn btn-outline-primary mt-1">Поиск</button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-sm">

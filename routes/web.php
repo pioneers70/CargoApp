@@ -14,20 +14,6 @@ use App\Http\Controllers\VpuObjectController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-/*Route::get('/', function () {
-    return view('cargoapp.index');
-})->name('cargo.index');*/
-
-/*Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');*/
-//Route::get('/mainpage',[MainPageController::class,'index'])->middleware('auth')->name('mainpage');
-/*Route::get('/mainpage',[MainPageController::class,'index'])->middleware('auth')->name('mainpage');*/
-/*Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});*/
 Route::get('/index', function () {
     return view('cargoapp.index');
 })->name('index');
