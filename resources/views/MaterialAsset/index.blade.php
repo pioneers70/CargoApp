@@ -2,7 +2,7 @@
 
 
         <div class="card mx-auto mt-5 mb-5 animate-fade-in shadow-lg bg-gradient-dull" style="max-width: 1200px;">
-            <div class="card-header text-center mb-1 display-6">
+            <div class="card-header text-center mb-1 display-6 text-shadow">
                 Справочник
                 <div>
                     <form class="d-flex" action="{{ route('materialAssets.search') }}" method="GET">
@@ -61,7 +61,7 @@
 
 
     <div class="container animate-fade-in d-flex justify-content-center">
-        {{ $materialAssets->appends(['query' => request()->input('query')])->links() }}
+        {{ $materialAssets->withQueryString(['query' => request()->input('query')])->links() }}
     </div>
 
 
