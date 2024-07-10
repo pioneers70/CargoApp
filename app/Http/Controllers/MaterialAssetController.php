@@ -24,11 +24,11 @@ class MaterialAssetController extends Controller
         $filter = app()->make(MaterialAssetFilter::class, ['queryParams' => array_filter($data)]);
         $materialAssets = MaterialAsset::filter($filter)->paginate(10);
 
-
         //        $materialAssets = MaterialAsset::with('asset_category')->paginate(10);
-                $assetCategories = AssetCategory::all();
+        $assetCategories = AssetCategory::all();
+        $tags = Tag::all();
 
-                return view('MaterialAsset.index', compact('materialAssets','assetCategories' ));
+        return view('MaterialAsset.index', compact('materialAssets', 'assetCategories','tags'));
     }
 
     /**
@@ -133,11 +133,12 @@ class MaterialAssetController extends Controller
         $query = $request->input('query', '');
         $materialAssets = MaterialAsset::where('name', 'like', "%{$query}%")->paginate(7);
         $assetCategories = AssetCategory::all();
+        $tags = Tag::all();
         if ($materialAssets->count() == 1) {
             return redirect()->route('materialAssets.show', ['materialAsset' => $materialAssets->first()->id]);
         }
 
-        return view('MaterialAsset.index', compact('materialAssets', 'query','assetCategories'));
+        return view('MaterialAsset.index', compact('materialAssets', 'query', 'assetCategories','tags'));
     }
 
     /**

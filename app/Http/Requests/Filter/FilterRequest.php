@@ -22,8 +22,10 @@ class FilterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => '',
-            'asset_category_id' => '',
+            'query' => 'nullable|string|max:255',
+            'asset_category_id' => 'nullable|integer|exists:asset_categories,id',
+            'tags' => 'nullable|array',
+            'tags.*' => 'integer|exists:tags,id',
         ];
     }
 }
