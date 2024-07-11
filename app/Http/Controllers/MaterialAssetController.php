@@ -81,8 +81,9 @@ class MaterialAssetController extends Controller
     public function show(MaterialAsset $materialAsset)
     {
         $infocard = $materialAsset->info_card;
+        $currentQuantity = $materialAsset->getCurrentQuantity();
 
-        return view('MaterialAsset.show', compact('materialAsset', 'infocard'));
+        return view('MaterialAsset.show', compact('materialAsset', 'infocard','currentQuantity'));
     }
 
     /**
@@ -142,11 +143,12 @@ class MaterialAssetController extends Controller
         $materialAssets = MaterialAsset::where('name', 'like', "%{$query}%")->paginate(7);
         $assetCategories = AssetCategory::all();
         $tags = Tag::all();
+        $selectedCategoryId = $request->input('asset_category_id');
         if ($materialAssets->count() == 1) {
             return redirect()->route('materialAssets.show', ['materialAsset' => $materialAssets->first()->id]);
         }
 
-        return view('MaterialAsset.index', compact('materialAssets', 'query', 'assetCategories', 'tags'));
+        return view('MaterialAsset.index', compact('materialAssets', 'query', 'assetCategories', 'tags','selectedCategoryId'));
     }
 
     /**
