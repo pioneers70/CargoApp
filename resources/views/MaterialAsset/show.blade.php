@@ -25,6 +25,8 @@
                             @endforeach
                         </ul>
                     </div>
+                    <div class="container">Количество: {{$currentQuantity}}
+                    </div>
                     <div class="btn-group" role="group">
                         <a href="{{route('materialAssets.edit', $materialAsset->id )}}" class="btn btn-outline-primary me-2">Редактировать</a>
                         <a href="{{route('materialAssets.index', $materialAsset->id )}}" class="btn btn-outline-primary me-2">Назад</a>
