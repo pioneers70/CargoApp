@@ -20,7 +20,7 @@
             </select>
 
             <div id="items-container">
-                <div class="row g-3 align-items-center item">
+                <div class="row g-3 align-items-center">
                     <div class="col-auto">
                         <label for="material_asset_id_0" class="form-label">Оборудование</label>
                         <select class="form-select form-select-sm form-select2-sm" name="items[0][material_asset_id]" id="material_asset_id_0">

@@ -12,8 +12,8 @@
                 </div>
             </div>
             <div class="container">
-                <div class="row">
-                        <form class="" action="{{ route('materialAssets.index') }}" method="GET">
+                <div class="row g-3 align-items-center">
+                        <form class="d-flex" action="{{ route('materialAssets.index') }}" method="GET">
                             <div class="col-3 me-2">
                                 <label for="asset_category_id" class="form-label">Выберите категорию</label>
                                 <select class="form-select" name="asset_category_id" id="asset_category_id">
@@ -25,13 +25,13 @@
                             </div>
                             <div class="col-3 me-2">
                                 <label for="tags" class="form-label">Выберите теги</label>
-                                <select class="form-select form-select-sm" name="tags[]" id="tags" multiple>
+                                <select class="form-select form-select-sm" size="3" name="tags[]" id="tags" multiple>
                                     @foreach($tags as $tag)
                                         <option value="{{ $tag->id }}">{{ $tag->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
-                            <div>
+                            <div class="col-auto me-2">
                                 <button type="submit" class="btn btn-outline-primary mt-3">Поиск</button>
                             </div>
                         </form>
@@ -46,6 +46,7 @@
                             <th scope="col" class="text-center">#</th>
                             <th scope="col" class="text-center">Название</th>
                             <th scope="col" class="text-center">Категория</th>
+                            <th scope="col" class="text-center">Теги</th>
                             <th scope="col" class="text-center">Сейчас на складе</th>
                             <th scope="col" class="text-center">Cправка</th>
                         </tr>
@@ -56,6 +57,11 @@
                                 <th scope="row" class="text-center">{{$materialAsset->id}}</th>
                                 <td class="text-center">{{$materialAsset->name}}</td>
                                 <td class="text-center">{{$materialAsset->asset_category->short_name}}</td>
+                                <td class="text-center">
+                                    @foreach($materialAsset->tags as $materialAssetTag)
+                                        <span class="badge badge-primary">{{$materialAssetTag->name}}</span>
+                                    @endforeach
+                                </td>
                                 <td class="text-center">{{$materialAsset->inventories->sum('quantity')}}</td>
                                 <td class="text-center"><a href="{{route('materialAssets.show', $materialAsset->id )}}"
                                        class="btn btn-outline-primary btn-sm">Посмотреть</a></td>

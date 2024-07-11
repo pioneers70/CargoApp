@@ -28,7 +28,7 @@ class MaterialAssetController extends Controller
         $assetCategories = AssetCategory::all();
         $tags = Tag::all();
 
-        return view('MaterialAsset.index', compact('materialAssets', 'assetCategories','tags'));
+        return view('MaterialAsset.index', compact('materialAssets', 'assetCategories', 'tags'));
     }
 
     /**
@@ -138,7 +138,7 @@ class MaterialAssetController extends Controller
             return redirect()->route('materialAssets.show', ['materialAsset' => $materialAssets->first()->id]);
         }
 
-        return view('MaterialAsset.index', compact('materialAssets', 'query', 'assetCategories','tags'));
+        return view('MaterialAsset.index', compact('materialAssets', 'query', 'assetCategories', 'tags'));
     }
 
     /**
