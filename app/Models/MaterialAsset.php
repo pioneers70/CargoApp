@@ -54,4 +54,17 @@ class MaterialAsset extends Model
     {
         return $this->HasOne(InfoCard::class, 'material_asset_id');
     }
+
+    public function getCurrentQuantity()
+    {
+        $totalIn = Operation::where('material_asset_id', $this->id)
+            ->where('type_movement', 'in')
+            ->sum('quantity');
+
+        $totalOut = Operation::where('material_asset_id', $this->id)
+            ->where('type_movement', 'out')
+            ->sum('quantity');
+
+        return $totalIn - $totalOut;
+    }
 }
