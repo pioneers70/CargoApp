@@ -4,8 +4,9 @@
 .select2-search input {
     background-color: #ffffff;
 }
-.select2-results {
-    background-color: #ffffff;
+.select2-container--bootstrap-5 .select2-results__option--selected {
+    background-color: #c06c84 !important;
+    color: black !important;
 }
 
 

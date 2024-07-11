@@ -1,7 +1,7 @@
 <x-app-import-layout>
     <div class="card mx-auto mt-5 mb-5 bg-gradient-dull shadow-lg" style="max-width: 1200px;">
 
-            <div class="card-header bg-gradient-dull text-center"><h4>{{$materialAsset->name}}</h4></div>
+            <div class="card-header bg-gradient-dull text-center display-6">{{$materialAsset->name}}</div>
             <div class="text-center">
                 <p>{{$materialAsset->asset_category->full_name}}</p>
             </div>
@@ -11,7 +11,7 @@
                     <p>{{ $infocard->description }}</p>
                     @if ($infocard->urlimg)
                         <div class="mt-3">
-                            <img src="{{ asset('storage/'.$infocard->urlimg) }} " alt="Image" class="img-fluid">
+                            <img src="{{ asset('storage/'.$infocard->urlimg) }} " alt="Image" class="img-fluid" style="width: 300px; height: auto;">
                         </div>
                     @endif
                     @else

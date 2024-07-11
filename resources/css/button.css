@@ -15,3 +15,11 @@
 .btn-custom-secondary:hover {
     background-color: #007bb5; /* Darker shade on hover */
 }
+.btn-custom-primary-outline {
+    color: #355c7d;
+    border-color: #355c7d;
+}
+.btn-custom-primary-outline:hover {
+    background-color: #C06C84FF; /* Darker shade on hover */
+
+}

@@ -21,15 +21,23 @@ class MaterialAssetController extends Controller
     public function index(FilterRequest $request)
     {
         $data = $request->validated();
+        $selectedCategoryId = $request->input('asset_category_id');
         $filter = app()->make(MaterialAssetFilter::class, ['queryParams' => array_filter($data)]);
-        $materialAssets = MaterialAsset::filter($filter)->paginate(10);
 
-        //        $materialAssets = MaterialAsset::with('asset_category')->paginate(10);
+        $query = MaterialAsset::filter($filter);
+
+        if ($selectedCategoryId) {
+            $query = $query->where('asset_category_id', $selectedCategoryId);
+        }
+
+        $materialAssets = $query->paginate(10)->withQueryString();
+
         $assetCategories = AssetCategory::all();
         $tags = Tag::all();
 
-        return view('MaterialAsset.index', compact('materialAssets', 'assetCategories', 'tags'));
+        return view('MaterialAsset.index', compact('materialAssets', 'assetCategories', 'tags', 'selectedCategoryId'));
     }
+
 
     /**
      * Show the form for creating a new resource.

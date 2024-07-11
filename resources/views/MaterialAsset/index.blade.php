@@ -5,34 +5,34 @@
                 Справочник
                 <div>
                     <form class="d-flex" action="{{ route('materialAssets.search') }}" method="GET">
-                        <input class="form-control mt-1 me-2 mb-1" type="search" name="query" placeholder="Поиск оборудования"
+                        <input class="form-control mt-1 me-2 mb-1 shadow-lg" type="search" name="query" placeholder="Поиск оборудования"
                                aria-label="Search" value="{{ request()->input('query') }}">
-                        <button class="btn btn-outline-light" type="submit">Поиск</button>
+                        <button class="btn btn-custom-primary-outline shadow-lg ms-4" type="submit">Поиск</button>
                     </form>
                 </div>
             </div>
             <div class="container">
-                <div class="row g-3 align-items-center">
+                <div class="row align-items-center">
                         <form class="d-flex" action="{{ route('materialAssets.index') }}" method="GET">
                             <div class="col-3 me-2">
-                                <label for="asset_category_id" class="form-label">Выберите категорию</label>
-                                <select class="form-select" name="asset_category_id" id="asset_category_id">
+                                <label for="asset_category_id" class="form-label h5 mt-1">Выберите категорию</label>
+                                <select class="form-select form-select2-sm" name="asset_category_id" id="asset_category_id">
                                     <option value="">Все категории</option>
                                     @foreach($assetCategories as $assetCategory)
-                                        <option value="{{ $assetCategory->id }}">{{ $assetCategory->short_name }}</option>
+                                        <option value="{{ $assetCategory->id }}" @selected($assetCategory->id == $selectedCategoryId)>{{ $assetCategory->short_name }}</option>
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="col-3 me-2">
-                                <label for="tags" class="form-label">Выберите теги</label>
-                                <select class="form-select form-select-sm" size="3" name="tags[]" id="tags" multiple>
+                            <div class="col-3 me-2 ms-3">
+                                <label for="tags" class="form-label h5 mt-1">Выберите теги</label>
+                                <select class="form-select form-select-sm form-select2-tg" size="3" name="tags[]" id="tags" multiple>
                                     @foreach($tags as $tag)
                                         <option value="{{ $tag->id }}">{{ $tag->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="col-auto me-2">
-                                <button type="submit" class="btn btn-outline-primary mt-3">Поиск</button>
+                                <button type="submit" class="btn btn-custom-primary-outline mt-4 ms-3 shadow-lg">Фильтровать</button>
                             </div>
                         </form>
                     </div>
@@ -59,12 +59,12 @@
                                 <td class="text-center">{{$materialAsset->asset_category->short_name}}</td>
                                 <td class="text-center">
                                     @foreach($materialAsset->tags as $materialAssetTag)
-                                        <span class="badge badge-primary">{{$materialAssetTag->name}}</span>
+                                        <span style="font-style: italic">{{$materialAssetTag->name}}</span>
                                     @endforeach
                                 </td>
                                 <td class="text-center">{{$materialAsset->inventories->sum('quantity')}}</td>
                                 <td class="text-center"><a href="{{route('materialAssets.show', $materialAsset->id )}}"
-                                       class="btn btn-outline-primary btn-sm">Посмотреть</a></td>
+                                       class="btn btn-custom-primary-outline btn-sm shadow">Посмотреть</a></td>
                             </tr>
                         @endforeach
                         </tbody>
