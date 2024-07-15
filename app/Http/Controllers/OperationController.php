@@ -14,7 +14,6 @@ use App\Models\Operation;
 use App\Models\Tag;
 use App\Models\VpuObject;
 use App\Models\Warehouse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
