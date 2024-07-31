@@ -21,6 +21,9 @@ Route::get('/index', function () {
 Route::get('/contacts', function () {
     return view('cargoapp.contacts');
 })->name('contacts');
+Route::get('/about', function () {
+    return view('cargoapp.about');
+})->name('about');
 
 Route::name('user.')->group(function () {
     Route::view('/mainpage', 'mainpage.index')->middleware('userGroupAllow')->name('mainpage');
@@ -28,6 +31,7 @@ Route::name('user.')->group(function () {
         if (Auth::check()) {
             return redirect(route('user.mainpage'));
         }
+
         return view('cargoapp.index');
     });
     Route::post('/login', [LoginController::class, 'login'])->name('login');
@@ -38,6 +42,7 @@ Route::name('user.')->group(function () {
         if (Auth::check()) {
             return redirect(route('user.mainpage'));
         }
+
         return view('cargoapp.registration');
     })->name('registration');
 });

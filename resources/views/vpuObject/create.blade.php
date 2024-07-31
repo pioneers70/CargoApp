@@ -1,6 +1,6 @@
 <x-app-import-layout>
     <div class="card mx-auto mt-5 mb-5 rounded-3 bg-gradient-dull" style="max-width: 1200px;">
-        <div class="card-header mt-1 text-center"><h2>Добавить новый объект</h2></div>
+        <div class="card-header mt-1 text-center display-6 text-shadow">Добавить новый объект</div>
         <div class="card-body">
             <form action="{{ route('vpuObjects.store') }}" method="post">
                 @csrf
@@ -38,9 +38,9 @@
 
 
         <div class="card mx-auto mt-5 mb-5 rounded-3 bg-gradient-dull" style="max-width: 1200px;">
-            <div class="card-header mt-1 text-center"><h2>
+            <div class="card-header mt-1 text-center display-6 text-shadow">
                     Добавить новую систему
-                </h2></div>
+                </div>
             <div class="card-body">
                 <form action="{{ route('systems.store') }}" method="post">
                     @csrf

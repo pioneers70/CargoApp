@@ -1,19 +1,4 @@
 <x-main-page-layout>
-    <header>
-        <div class="container">
-            <ul class="nav justify-content-center mb-5 navbar-gradient-redsunset rounded-bottom-pill shadow">
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="{{ route('index') }}">Главная</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="{{route('contacts')}}">Контакты</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="#">О приложении</a>
-                </li>
-            </ul>
-        </div>
-    </header>
 
     <div class="container justify-content-center text-center display-6 mb-5 text-shadow">Регистрация</div>
 
@@ -35,7 +20,8 @@
                 <input type="text" class="form-control" id="name" name="name" required
                        autocomplete="current-password">
             </div>
-            <button type="submit" class="btn btn-custom-primary d-flex justify-content-center w-100 mt-4">Регистрация</button>
+            <button type="submit" class="btn btn-custom-primary d-flex justify-content-center w-100 mt-4">Регистрация
+            </button>
         </form>
     </div>
 

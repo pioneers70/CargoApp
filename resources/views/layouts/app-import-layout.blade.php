@@ -14,16 +14,7 @@
 <div>
     {{ $slot }}
 </div>
-{{--<script type="module">
-    document.addEventListener('DOMContentLoaded', function () {
-        $(".form-select2-sm").select2({
-            theme: "bootstrap-5",
-            containerCssClass: "select2--small",
-            selectionCssClass: "select2--small",
-            dropdownCssClass: "select2--small",
-        });
-    });
-</script>--}}
+
 {{ $scripts ?? '' }}
 </body>
 </html>

@@ -1,19 +1,4 @@
 <x-main-page-layout>
-    <header>
-        <div class="container">
-            <ul class="nav justify-content-center mb-5 navbar-gradient-redsunset rounded-bottom-pill shadow">
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="{{ route('user.registration') }}">Регистрация</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="{{route('contacts')}}">Контакты</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="#">О приложении</a>
-                </li>
-            </ul>
-        </div>
-    </header>
     <div class="container justify-content-center text-center display-3 mb-5 text-shadow">Добро пожаловать в CargoAPP</div>
 
     <div class="container d-flex align-items-center justify-content-center bg-gradient-friday rounded shadow-lg" style="min-height: 400px; max-width: 400px; padding: 20px">
