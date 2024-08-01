@@ -1,4 +1,5 @@
 <x-main-page-layout>
+
     <div class="container justify-content-center text-center display-3 mb-5 text-shadow">Добро пожаловать в CargoAPP</div>
 
     <div class="container d-flex align-items-center justify-content-center bg-gradient-friday rounded shadow-lg" style="min-height: 400px; max-width: 400px; padding: 20px">

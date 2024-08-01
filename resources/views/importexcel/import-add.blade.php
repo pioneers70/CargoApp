@@ -17,6 +17,9 @@
                                 <input type="file" name="import_file" class="form-control">
                                 <button type="submit" class="btn btn-outline-primary">Добавить</button>
                             </div>
+                            @error('import_file')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                         </form>
                     </div>
                 </div>

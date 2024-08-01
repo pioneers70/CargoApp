@@ -2,17 +2,15 @@
 
 namespace App\Imports;
 
-use App\Models\Item;
 use App\Models\MaterialAsset;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
-
 class MaterialAssetImport implements ToCollection, WithHeadingRow
 {
     /**
-     * @param Collection $collection
+     * @param  Collection  $collection
      */
     public function collection(Collection $rows)
     {
@@ -32,5 +30,4 @@ class MaterialAssetImport implements ToCollection, WithHeadingRow
             }
         }
     }
-
 }

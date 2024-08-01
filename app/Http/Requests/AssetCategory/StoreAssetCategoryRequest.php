@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests\AssetCategory;
 
+use App\Rules\NonOnlyNumeric;
+use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreAssetCategoryRequest extends FormRequest
@@ -17,13 +19,22 @@ class StoreAssetCategoryRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     * @return array<string, ValidationRule|array|string>
      */
     public function rules(): array
     {
         return [
-            'full_name' => '',
-            'short_name' => '',
+            'full_name' => ['required', 'string', new NonOnlyNumeric],
+            'short_name' => 'nullable|string',
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'full_name.required' => 'Полное название обязательно к заполнению',
+            'full_name.string' => 'Полное название должно быть текстовым',
+            'short_name.string' => 'Сокращенное название должно быть текстовым',
         ];
     }
 }

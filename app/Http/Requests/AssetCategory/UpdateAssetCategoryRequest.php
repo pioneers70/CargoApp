@@ -22,8 +22,17 @@ class UpdateAssetCategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'full_name' => '',
-            'short_name' => '',
+            'full_name' => 'required|string',
+            'short_name' => 'nullable|string',
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'full_name.required' => 'Полное название обязательно к заполнению',
+            'full_name.string' => 'Полное название должно быть текстовым',
+            'short_name.string' => 'Сокращенное название должно быть текстовым',
         ];
     }
 }
