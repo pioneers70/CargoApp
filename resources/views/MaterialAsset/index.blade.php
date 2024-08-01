@@ -19,7 +19,7 @@
                                 <select class="form-select form-select2-sm" name="asset_category_id" id="asset_category_id">
                                     <option value="">Все категории</option>
                                     @foreach($assetCategories as $assetCategory)
-                                        <option value="{{ $assetCategory->id }}" @selected($assetCategory->id == $selectedCategoryId)>{{ $assetCategory->short_name }}</option>
+                                        <option value="{{ $assetCategory->id }}" @selected($assetCategory->id == $selectedCategoryId)>{{ $assetCategory->short_name  ?? $assetCategory->full_name}}</option>
                                     @endforeach
                                 </select>
                             </div>

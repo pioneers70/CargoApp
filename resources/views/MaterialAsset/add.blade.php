@@ -60,8 +60,8 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-3 bg-gradient-dull shadow p-3 mb-5 me-4 rounded">
-                <div class="container mt-1 text-center ">Добавить категорию оборудования</div>
+            <div class="col-4 bg-gradient-dull shadow p-3 mb-5 me-4 rounded">
+                <div class="container mt-1 text-center text-shadow lead">Добавить категорию оборудования</div>
                 <form action="{{ route('assetsCategories.store') }}" method="post">
                     @csrf
                     <hr style="color: #0f0fe0; height: 5px">
@@ -80,17 +80,21 @@
                     <button type="submit" class="btn btn-primary mb-2 mt-1">Добавить</button>
                 </form>
             </div>
-            <div class="col-3 bg-gradient-dull shadow p-3 mb-5 rounded">
-                <div class="container mt-1 text-center">Добавить новые теги</div>
+            <div class="col-4 bg-gradient-dull shadow p-3 mb-5 rounded">
+                <div class="container mt-1 text-center text-shadow lead">Добавить новые теги</div>
                 <form action="{{ route('tags.store') }}" method="post">
                     @csrf
                     <hr style="color: #0c0cda; height: 5px">
                     <div class="mt-2">
                         <label for="name" class="form-label">Введите название</label>
                         <input type="text" class="form-control" name="name" id="name" placeholder="Название">
+                        @error('name')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <button type="submit" class="btn btn-primary mt-1">Добавить</button>
                 </form>
+
             </div>
         </div>
     </div>

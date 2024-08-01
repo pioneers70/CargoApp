@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Tag;
 
+use App\Rules\NonOnlyNumeric;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreTagRequest extends FormRequest
@@ -22,7 +23,8 @@ class StoreTagRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required',
+            'name' => ['required', 'string', new NonOnlyNumeric],
         ];
     }
+
 }
