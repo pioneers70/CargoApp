@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\System;
 
+use App\Rules\NonOnlyNumeric;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreSystemRequest extends FormRequest
@@ -22,8 +23,8 @@ class StoreSystemRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'full_name' =>'',
-            'short_name' =>'',
+            'full_name' => ['required', 'string', new NonOnlyNumeric],
+            'short_name' => 'nullable|string',
         ];
     }
 }

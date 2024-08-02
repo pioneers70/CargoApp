@@ -5,7 +5,7 @@
                 Справочник
                 <div>
                     <form class="d-flex" action="{{ route('materialAssets.search') }}" method="GET">
-                        <input class="form-control mt-1 me-2 mb-1 shadow-lg" type="search" name="query" placeholder="Поиск оборудования"
+                        <input class="form-control mt-1 me-2 mb-1 shadow" type="search" name="query" placeholder="Поиск оборудования"
                                aria-label="Search" value="{{ request()->input('query') }}">
                         <button class="btn btn-custom-primary-outline shadow-lg ms-4" type="submit">Поиск</button>
                     </form>

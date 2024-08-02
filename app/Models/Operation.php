@@ -5,14 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Operation extends Model
 {
     use HasFactory;
 
     protected $table = 'operations';
+
     protected $guarded = false;
+
     protected $fillable = [
         'reason',
         'user_id',
@@ -48,5 +49,4 @@ class Operation extends Model
     {
         return $this->BelongsTo(Warehouse::class, 'to_warehouse_id');
     }
-
 }

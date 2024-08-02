@@ -9,7 +9,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <title>{{ $title ?? 'CargoAPP' }}</title>
 </head>
-<body>
+<body class="bg-color-moonrise min-vh-100">
 <x-navbar.navbarbs5/>
 <div>
     {{ $slot }}

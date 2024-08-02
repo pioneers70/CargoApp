@@ -61,24 +61,26 @@
     <div class="container">
         <div class="row">
             <div class="col-4 bg-gradient-dull shadow p-3 mb-5 me-4 rounded">
-                <div class="container mt-1 text-center text-shadow lead">Добавить категорию оборудования</div>
-                <form action="{{ route('assetsCategories.store') }}" method="post">
-                    @csrf
-                    <hr style="color: #0f0fe0; height: 5px">
-                    <div class="mt-1">
-                        <label for="full_name" class="form-label">Введите полное название</label>
-                        <input type="text" class="form-control" name="full_name" id="full_name" placeholder="Название">
-                        @error('full_name')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
-                    </div>
-                    <div class="mt-3">
-                        <label for="short_name" class="form-label">Введите короткое название</label>
-                        <input type="text" class="form-control" name="short_name" id="short_name"
-                               placeholder="Коротко">
-                    </div>
-                    <button type="submit" class="btn btn-primary mb-2 mt-1">Добавить</button>
-                </form>
+                <div class="card-header mt-1 text-center text-shadow lead">Добавить категорию оборудования</div>
+                <div class="card-body">
+                    <form action="{{ route('assetsCategories.store') }}" method="post">
+                        @csrf
+                        <div class="mt-1">
+                            <label for="full_name" class="form-label">Введите полное название</label>
+                            <input type="text" class="form-control" name="full_name" id="full_name"
+                                   placeholder="Название">
+                            @error('full_name')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="mt-3">
+                            <label for="short_name" class="form-label">Введите короткое название</label>
+                            <input type="text" class="form-control" name="short_name" id="short_name"
+                                   placeholder="Коротко">
+                        </div>
+                        <button type="submit" class="btn btn-primary mb-2 mt-1">Добавить</button>
+                    </form>
+                </div>
             </div>
             <div class="col-4 bg-gradient-dull shadow p-3 mb-5 rounded">
                 <div class="container mt-1 text-center text-shadow lead">Добавить новые теги</div>
@@ -98,4 +100,6 @@
             </div>
         </div>
     </div>
+
+
 </x-app-import-layout>
