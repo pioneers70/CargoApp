@@ -3,7 +3,7 @@
     <div class="container justify-content-center text-center display-6 mb-5 text-shadow">Регистрация</div>
 
     <div class="container d-flex align-items-center justify-content-center bg-gradient-friday rounded shadow-lg" style="min-height: 400px; max-width: 400px; padding: 20px">
-        <form class="w-100" method="POST" action="{{ route('user.registration') }}" style="max-width: 400px;">
+        <form class="w-100" method="POST" action="{{ route('user.store_registration') }}" style="max-width: 400px;">
             @csrf
             <div class="mb-3">
                 <label for="email" class="form-label">Введите Email</label>

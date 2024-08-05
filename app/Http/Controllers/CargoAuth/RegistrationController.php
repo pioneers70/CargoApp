@@ -3,23 +3,20 @@
 namespace App\Http\Controllers\CargoAuth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Auth\StoreRegistrationRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class RegistrationController extends Controller
 {
-    public function save(Request $request)
+    public function save(StoreRegistrationRequest $request)
     {
         if (Auth::check()) {
             return redirect(route('user.mainpage'));
         }
-        $validateForms = $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8'],
-        ]);
-        if (User::were('email', $validateForms['email'])->exists()) {
+        $validateForms = $request->validated();
+        if (User::where('email', $validateForms['email'])->exists()) {
             return redirect(route('user.registration'))->withErrors([
                 'email' => 'Пользователь с таким email уже зарегистрирован',
             ]);

@@ -9,5 +9,8 @@
         <li class="nav-item">
             <a class="nav-link text-white" href="{{route('about')}}">О приложении</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" href="{{ route('user.registration') }}">Регистрация</a>
+        </li>
     </ul>
 </div>

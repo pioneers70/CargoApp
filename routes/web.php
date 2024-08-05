@@ -36,13 +36,12 @@ Route::name('user.')->group(function () {
     });
     Route::post('/login', [LoginController::class, 'login'])->name('login');
     Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
-    Route::post('/registration', [RegistrationController::class, 'save']);
+    Route::post('/registration', [RegistrationController::class, 'save'])->name('store_registration');
 
     Route::get('/registration', function () {
         if (Auth::check()) {
             return redirect(route('user.mainpage'));
         }
-
         return view('cargoapp.registration');
     })->name('registration');
 });
