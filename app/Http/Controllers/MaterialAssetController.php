@@ -38,7 +38,6 @@ class MaterialAssetController extends Controller
         return view('MaterialAsset.index', compact('materialAssets', 'assetCategories', 'tags', 'selectedCategoryId'));
     }
 
-
     /**
      * Show the form for creating a new resource.
      */
@@ -83,7 +82,7 @@ class MaterialAssetController extends Controller
         $infocard = $materialAsset->info_card;
         $currentQuantity = $materialAsset->getCurrentQuantity();
 
-        return view('MaterialAsset.show', compact('materialAsset', 'infocard','currentQuantity'));
+        return view('MaterialAsset.show', compact('materialAsset', 'infocard', 'currentQuantity'));
     }
 
     /**
@@ -148,7 +147,7 @@ class MaterialAssetController extends Controller
             return redirect()->route('materialAssets.show', ['materialAsset' => $materialAssets->first()->id]);
         }
 
-        return view('MaterialAsset.index', compact('materialAssets', 'query', 'assetCategories', 'tags','selectedCategoryId'));
+        return view('MaterialAsset.index', compact('materialAssets', 'query', 'assetCategories', 'tags', 'selectedCategoryId'));
     }
 
     /**
